@@ -1,7 +1,7 @@
 {
   "name": "node-handlebars-boilerplate",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "CurRent",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -15,6 +15,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.6.4",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {

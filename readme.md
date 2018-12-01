@@ -24,3 +24,6 @@
             * Make maintenance request for property
             * Pay rent or portion of rent
             * View Contract
+
+## Color Pallette
+Click [here](https://coolors.co/export/pdf/3c91e6-342e37-a2d729-fafffd-fa824c)
