@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CurRent</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../styles/landlord.css" />
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <div class="navbar">
+      <h2 id="logo">CurRent</h2>
+      <!-- default route when clicking logo logged in as landlord -->
+      <a href="/landlord/properties">
+        <div class="item">
+          <img
+            id="travis"
+            src="https://dwglogo.com/wp-content/uploads/2017/12/1200px-travis_ci_vector_logo.png"
+            alt="templogo"
+          />
+          <div id="profile">Landlord: {Name}</div>
+        </div>
+      </a>
+      <!-- properties -->
+      <a href="/landlord/properties">
+        <div class="item">
+          <div class="btn fa fa-home"></div>
+          <div class="label">Properties</div>
+        </div>
+      </a>
+      <!-- tenants -->
+      <a href="/landlord/tenants">
+        <div class="item">
+          <div class="btn fa fa-users"></div>
+          <div class="label">Tenants</div>
+        </div>
+      </a>
+      <!-- maintenance -->
+      <a href="/landlord/maintenance">
+        <div class="item">
+          <div class="btn fa fa-wrench"></div>
+          <div class="label">Maintenance</div>
+        </div>
+      </a>
+      <!-- invoices -->
+      <a href="/landlord/invoices">
+        <div class="item">
+          <div class="fa"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="label">Invoices</div>
+        </div>
+      </a>
+      <!-- contracts -->
+      <a href="/landlord/contracts">
+        <div class="item">
+          <div class="btn fa fa-file"></div>
+          <div class="label">Contracts</div>
+        </div>
+      </a>
+      <!-- signout -->
+      <a href="/logout">
+        <div class="item">
+          <div class="btn fa fa-sign-out-alt"></div>
+          <div class="label">Logout</div>
+        </div>
+      </a>
+    </div>
+    <!-- end nav bar -->
+
+    
+
+
+  </body>
+</html>
