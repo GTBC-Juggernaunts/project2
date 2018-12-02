@@ -17,6 +17,11 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="../styles/landlord.css" />
   </head>
   <body>
@@ -37,21 +42,21 @@
       <!-- properties -->
       <a href="/landlord/properties">
         <div class="item">
-          <div class="btn fa fa-home"></div>
+          <div class="fa fa-home"></div>
           <div class="label">Properties</div>
         </div>
       </a>
       <!-- tenants -->
       <a href="/landlord/tenants">
         <div class="item">
-          <div class="btn fa fa-users"></div>
+          <div class="fa fa-users"></div>
           <div class="label">Tenants</div>
         </div>
       </a>
       <!-- maintenance -->
       <a href="/landlord/maintenance">
         <div class="item">
-          <div class="btn fa fa-wrench"></div>
+          <div class="fa fa-wrench"></div>
           <div class="label">Maintenance</div>
         </div>
       </a>
@@ -65,20 +70,51 @@
       <!-- contracts -->
       <a href="/landlord/contracts">
         <div class="item">
-          <div class="btn fa fa-file"></div>
+          <div class="fa fa-file"></div>
           <div class="label">Contracts</div>
         </div>
       </a>
       <!-- signout -->
       <a href="/logout">
         <div class="item">
-          <div class="btn fa fa-sign-out-alt"></div>
+          <div class="fa fa-sign-out-alt"></div>
           <div class="label">Logout</div>
         </div>
       </a>
     </div>
     <!-- end nav bar -->
 
+    <!-- main content -->
+    <container id="main">
+		
+			<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </container>
     
 
 
