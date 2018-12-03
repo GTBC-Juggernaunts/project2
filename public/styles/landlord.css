@@ -9,6 +9,7 @@
   text-align: center; 
   color: #84D2F6;
   font-family: 'Montserrat', sans-serif;
+  font-size: 25px; 
 }
 
 #travis {
@@ -23,6 +24,16 @@
   font-size:12px;
   font-family: 'Montserrat', sans-serif;
 }
+
+/* main content */
+.content {
+    margin-left: 175px; 
+}
+
+.jumbotron {
+    background-color: transparent !important; 
+}
+/* end main content */
 
 /* style nav bar using flex box to stick on left hand side */
 .navbar {

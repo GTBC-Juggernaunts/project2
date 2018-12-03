@@ -18,7 +18,10 @@
       crossorigin="anonymous"
     />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -85,14 +88,57 @@
     <!-- end nav bar -->
 
     <!-- main content -->
-    <container id="main">
-		
-			<table>
+    <div class="content">
+    <div class="jumbotron">
+        <h1 class="display-3">My Properties</h1>
+        <p class="lead">Add Property</p>
+        <hr class="my-2">
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary|secondary|success|danger|warning|info|light|dark|link">
+              <img class="card-img-top" src="holder.js/100px180/" alt="">
+              <div class="card-body">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">Text</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-primary|secondary|success|danger|warning|info|light|dark|link">
+              <img class="card-img-top" src="holder.js/100px180/" alt="">
+              <div class="card-body">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">Text</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-primary|secondary|success|danger|warning|info|light|dark|link">
+              <img class="card-img-top" src="holder.js/100px180/" alt="">
+              <div class="card-body">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">Text</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-primary|secondary|success|danger|warning|info|light|dark|link">
+              <img class="card-img-top" src="holder.js/100px180/" alt="">
+              <div class="card-body">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">Text</p>
+              </div>
+            </div>
+        </div>
+    </div>
+
+      <table>
         <thead>
           <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+            <th>Name</th>
+            <th>Item Name</th>
+            <th>Item Price</th>
           </tr>
         </thead>
 
@@ -114,9 +160,6 @@
           </tr>
         </tbody>
       </table>
-    </container>
-    
-
-
+    </div>
   </body>
 </html>
