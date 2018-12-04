@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-.list-group-item {
-  line-height: 2.5;
-}
-=======
 /* Main Rules */
 body {
   display: flex;
@@ -41,4 +36,3 @@ section {
   margin-top: auto;
   color: #342e37;
 }
->>>>>>> 310a247... wavy progress
