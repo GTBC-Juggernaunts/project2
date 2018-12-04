@@ -1,3 +1,44 @@
+<<<<<<< HEAD
 .list-group-item {
   line-height: 2.5;
 }
+=======
+/* Main Rules */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-image: url('/public/images/waves3.jpg');
+  background-size: cover;
+  opacity: .7;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Colors */
+.ocean-blue {
+  background-color: #3C91E6;
+}
+
+/* Navigation */
+nav > * {
+  margin: 0 15px;
+}
+
+.nav-wrapper li > a:hover {
+  background-color: #A2D729;
+}
+
+/* Section */
+section {
+  height: 50vh;
+  margin-top: 150px;
+}
+
+.headline {
+  margin-top: auto;
+  color: #342e37;
+}
+>>>>>>> 310a247... wavy progress
