@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CurRent</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+
+    <!-- Material Icon CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="ocean-blue">
+        <div class="nav-wrapper ocean-blue">
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile nav-links" class="right hide-on-med-and-down">
+                <li><a class='waves-effect waves-light' href="/public/html/index.html">Home</a></li>
+                <li><a class='waves-effect waves-light' href="/public/html/aboutus.html">About Us</a></li>
+                <li><a class='waves-effect waves-light modal-trigger' href="#register-modal">Register</a></li>
+                <li><a class='waves-effect waves-light modal-trigger' href="#login-modal">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal center-align">
+        <div class="modal-content">
+            <i class="material-icons medium">receipt</i>
+            <h4>Register with CurRent</h4>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s4">
+                <select name="login" required>
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value="Landlord">Landlord</option>
+                    <option value="Tenant">Tenant</option>
+                </select>
+                <label for="register-as">Registering as a ...</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s2">
+                <input type="text" id="first-name">
+                <label for="first-name">First Name</label>
+            </div>
+            <div class="input-field col s4 push-s2">
+                <input type="text" id="last-name">
+                <label for="last-name">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s4">
+                <input type="text" id="email">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s4">
+                <input type="password" id="password">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect btn-flat">Sign-up</a>
+            <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal center-align">
+        <div class="modal-content">
+            <i class="material-icons medium prefix">person</i>
+            <h4>Login</h4>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s4">
+                <select name="login" required>
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value="Landlord">Landlord</option>
+                    <option value="Tenant">Tenant</option>
+                </select>
+                <label for="login-as">Logging in as ...</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s4">
+                <input type="text" id="username">
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4 push-s4">
+                <input type="text" id="password">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!-- Post to DB -->
+            <a href="#!" class="modal-close waves-effect btn-flat">Login</a>
+            <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main>
+
+        <!-- Home  -->
+        <section class="row home container-wide">
+            <div class="col s4 offset-s4 center-align headline">
+                <h1>Simple Property Management</h1>
+                <button class="btn waves-effect waves-light ocean-blue modal-trigger" href='#register-modal'>Sign up
+                    Today!</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer ocean-blue">
+        <div class="footer-copyright">
+            <div class="container">
+                CurRent © 2018 Copyright
+                <a class="grey-text text-lighten-4 right" href="https://github.com/GTBC-Juggernaunts/project2" rel="noreferrer" target="_blank">Github
+                    <i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="../js/materialize.js"></script>
+
+</html>
