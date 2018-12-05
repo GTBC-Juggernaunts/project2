@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     rent: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: true
     }
 

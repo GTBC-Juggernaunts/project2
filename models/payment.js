@@ -11,16 +11,16 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
-  property.associate = function(models) {
-    property.belongsTo(models.lease, {
+  payment.associate = function(models) {
+    payment.belongsTo(models.lease, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  property.associate = function(models) {
-    property.belongsTo(models.paymentstatus, {
+  payment.associate = function(models) {
+    payment.belongsTo(models.paymentstatus, {
       foreignKey: {
         allowNull: false
       }

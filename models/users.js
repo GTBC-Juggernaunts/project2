@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultvalue: false,
     },
     lastupdatedtimestamp: {
-      type: DateTypes.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
       defaultvalue: false,
     }
