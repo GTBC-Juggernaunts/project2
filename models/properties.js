@@ -20,7 +20,23 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   property.associate = function(models) {
-    property.belongsTo(models.user, {
+    property.belongsTo(models.landlord, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  property.associate = function(models) {
+    property.hasMany(models.lease, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  property.associate = function(models) {
+    property.hasMany(models.maintenance, {
       foreignKey: {
         allowNull: false
       }

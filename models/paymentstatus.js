@@ -6,5 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
+  paymenystatus.associate = function(models) {
+    paymentstatus.hasMany(models.payment, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return paymentstatus;
 };

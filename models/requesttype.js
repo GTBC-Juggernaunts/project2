@@ -6,5 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
+  requesttype.associate = function(models) {
+    requesttype.hasMany(models.maintenance, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return requesttype;
 };

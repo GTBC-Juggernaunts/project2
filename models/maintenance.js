@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const maintenance = sequelize.define("maintenance", {
-    description:{
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -10,22 +10,24 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  maintenance.associate = function(models) {
+  maintenance.associate = function (models) {
 
-    maintenance.belongsTo(models.user, {
+    maintenance.belongsTo(models.landlord, {
       foreignKey: {
-        as: 'landlord',
         allowNull: false
       }
     });
+  };
 
-    maintenance.belongsTo(models.user, {
+  maintenance.associate = function (models) {
+    maintenance.belongsTo(models.tenant, {
       foreignKey: {
-        as: 'tenant',
         allowNull: false
       }
     });
+  };
 
+  maintenance.associate = function (models) {
     maintenance.belongsTo(models.requesttype, {
       foreignKey: {
         allowNull: false

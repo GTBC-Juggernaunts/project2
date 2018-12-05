@@ -12,10 +12,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    updateddate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     isactive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -34,6 +30,30 @@ module.exports = function(sequelize, DataTypes) {
     }
 
   });
+
+  lease.associate = function(models) {
+    lease.belongsTo(models.property, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  lease.associate = function(models) {
+    lease.belongsTo(models.tenant, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  lease.associate = function(models) {
+    lease.hasMany(models.payment, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return lease;
 };
