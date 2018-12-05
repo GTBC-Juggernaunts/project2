@@ -4,14 +4,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    }
   });
 
   maintenance.associate = function (models) {
-
     maintenance.belongsTo(models.landlord, {
       foreignKey: {
         allowNull: false

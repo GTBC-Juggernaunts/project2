@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   tenant.associate = function(models) {
-    tenant.hasOne(models.landlord, {
+    tenant.hasMany(models.landlord, {
       foreignKey: {
         allowNull: false
       }
