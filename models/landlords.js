@@ -9,13 +9,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
-  landlord.associate = function(models) {
+
+  landlord.associate = function (models) {
     landlord.belongsTo(models.tenant, {
       foreignKey: {
         allowNull: false
       }
     });
   };
+
   landlord.associate = function(models) {
     landlord.hasMany(models.property, {
       foreignKey: {
@@ -23,6 +25,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
+
   landlord.associate = function(models) {
     landlord.hasMany(models.maintenance, {
       foreignKey: {
