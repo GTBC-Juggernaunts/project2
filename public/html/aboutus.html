@@ -37,26 +37,77 @@
     </nav>
 
     <!-- Register Modal -->
-    <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <h4>Register with CurRent</h4>
-            <p>A bunch of text</p>
+    <div id="register-modal" class="modal center-align">
+            <div class="modal-content">
+                <i class="material-icons medium">receipt</i>
+                <h4>Register with CurRent</h4>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <select name="login" required>
+                        <option value="" disabled selected>Choose an option</option>
+                        <option value="Landlord">Landlord</option>
+                        <option value="Tenant">Tenant</option>
+                    </select>
+                    <label for="register-as">Registering as a ...</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 push-s2">
+                    <input type="text" id="first-name">
+                    <label for="first-name">First Name</label>
+                </div>
+                <div class="input-field col s4 push-s2">
+                    <input type="text" id="last-name">
+                    <label for="last-name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="text" id="email">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat">Sign-up</a>
+                <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+            </div>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
 
     <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <h4>Login to CurRent</h4>
-            <p>A bunch of text</p>
+    <div id="login-modal" class="modal center-align">
+            <div class="modal-content">
+                <i class="material-icons medium prefix">person</i>
+                <h4>Login</h4>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <select name="login" required>
+                        <option value="" disabled selected>Choose an option</option>
+                        <option value="Landlord">Landlord</option>
+                        <option value="Tenant">Tenant</option>
+                    </select>
+                    <label for="loginas">Logging in as ...</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="text" id="username">
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="text" id="password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- Post to DB -->
+                <a href="#!" class="modal-close waves-effect btn-flat">Login</a>
+                <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+            </div>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
 
     <!-- Main -->
     <main>
