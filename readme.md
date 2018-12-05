@@ -1,5 +1,8 @@
 # CurRent
 
+## Status
+Travis Status\
+[![Build Status](https://travis-ci.org/GTBC-Juggernaunts/project2.svg?branch=master)](https://travis-ci.org/GTBC-Juggernaunts/project2)
 ## Project Information
 
 * Project Title
