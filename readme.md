@@ -30,5 +30,3 @@ Travis Status\
 
 ## Color Pallette
 Click [here](https://coolors.co/export/pdf/3c91e6-342e37-a2d729-fafffd-fa824c)
-
-[![Build Status](https://travis-ci.org/GTBC-Juggernaunts/project2.svg?branch=master)](https://travis-ci.org/GTBC-Juggernaunts/project2)
