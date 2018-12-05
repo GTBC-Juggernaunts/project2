@@ -6,22 +6,23 @@ $(function() {
     const maintRequest = {
       requestType: $("#requestType").val(),
       address: $("#address"),
-      description: $("#textarea1").val()
+      description: $("#description").val()
     };
 
     //Post request for maintenace request
-    //
-    //////////////////////////////////
-    // $.ajax("/tenant/maintenance", {
-    //   type: "POST",
-    //   data: maintRequest
-    // }).then(function() {
-    //   console.log("new maintenance request submitted successfully");
-    //   location.reload();
-    // });
+    $.ajax("/tenant/maintenance", {
+      type: "POST",
+      data: maintRequest
+    }).then(function() {
+      console.log("new maintenance request submitted successfully");
+      location.reload();
+    });
 
     console.log(maintRequest);
   });
+
+  // GET request to pull in maint requests for this tenant
+  // take maintenance requests and place them in cards
 });
 
-// take maintenance requests and place them in cards
+
