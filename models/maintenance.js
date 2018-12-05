@@ -25,6 +25,12 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+
+    maintenance.belongsTo(models.requesttype, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
 
   return maintenance;
