@@ -1,5 +1,5 @@
 $(document).ready(function() {
   $(".dropdown-trigger").dropdown();
-  $(".modal").modal();
+  $(".modal").modal('onOpenStart');
   $("select").formSelect();
 });
