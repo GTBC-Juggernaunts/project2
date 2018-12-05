@@ -5,9 +5,13 @@ $(function() {
     // maintenance request object
     const maintRequest = {
       requestType: $("#requestType").val(),
+      address: $("#address"),
       description: $("#textarea1").val()
     };
 
+    //Post request for maintenace request
+    //
+    //////////////////////////////////
     // $.ajax("/tenant/maintenance", {
     //   type: "POST",
     //   data: maintRequest
