@@ -26,6 +26,12 @@ nav > * {
   background-color: #A2D729;
 }
 
+/* Modal */
+.modal {
+  opacity: .4;
+  width: 30vw;
+}
+
 /* Section */
 section {
   height: 80vh;
