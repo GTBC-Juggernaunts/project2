@@ -1,14 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   const payment = sequelize.define("payment", {
-    datedue:{
+    datedue: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
     paymentamt: {
       type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-
+      allowNull: false
+    }
   });
 
   payment.associate = function(models) {

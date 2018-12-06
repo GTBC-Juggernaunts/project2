@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   const requesttype = sequelize.define("requesttype", {
-    type:{
+    type: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   });
 
   requesttype.associate = function(models) {

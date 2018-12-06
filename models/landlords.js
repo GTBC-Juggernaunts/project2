@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const landlord = sequelize.define("landlord", {
-    name:{
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  landlord.associate = function (models) {
+  landlord.associate = function(models) {
     landlord.belongsTo(models.tenant, {
       foreignKey: {
         allowNull: false

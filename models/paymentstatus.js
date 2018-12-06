@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   const paymentstatus = sequelize.define("paymentstatus", {
-    status:{
+    status: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   });
 
   paymentstatus.associate = function(models) {

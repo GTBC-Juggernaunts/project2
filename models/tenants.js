@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const tenant = sequelize.define("tenant", {
-    name:{
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -8,7 +8,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-
   });
 
   tenant.associate = function(models) {

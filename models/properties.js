@@ -1,22 +1,21 @@
 module.exports = function(sequelize, DataTypes) {
   const property = sequelize.define("property", {
-    address:{
+    address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     capacity: {
       type: DataTypes.SMALLINT,
-      allowNull: false,
+      allowNull: false
     },
     rent: {
       type: DataTypes.FLOAT,
-      allowNull: true,
-    },
-
+      allowNull: true
+    }
   });
 
   property.associate = function(models) {
