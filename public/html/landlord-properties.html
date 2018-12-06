@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head>    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CurRent</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous"/>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
 
+    <!-- Material Icon CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <!-- Your custom styles -->
     <link rel="stylesheet" href="../styles/landlord.css" />
   </head>
   <body>
@@ -101,14 +100,69 @@
               <img
                 src="https://cdn.vox-cdn.com/thumbor/SZI_0MOdoxBwcfYVftHcCdLJ2fc=/0x0:1600x1066/1820x1213/filters:focal(642x458:898x714):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60283807/Perry1.0.jpg"
               />
-              <span class="card-title">100 Peachtree Drive</span>
+              <img
+                src="{{this.imageUrl}}"
+              />
             </div>
-            <div class="card-content property-details"><p>Property details here.</p></div>
-            <div class="card-action"><button class="btn">Details</button></div>
+            <div class="card-content property-details"><p>{{this.propertyAddress}}</p></div>
+            <div class="card-action"><button href="#property-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
           </div>
         </div>
         <!-- end property card -->
       </div>
     </div>
+
+    <!-- Property Details Modal -->
+    <div id="property-details-modal" class="modal center-align">
+        <div class="modal-content">
+            <i class="material-icons">home</i>
+            <h5>Property Information</h5>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 id="prop-description">Description</h5>
+                <!-- add maintenance request return object here -->
+                <div>Resolved</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="prop-capacity">Capacity</h5>
+                <!-- add maintenance request return object here -->
+                <div>Electrical</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="prop-active">Vacant</h5>
+                <!-- add maintenance request return object here -->
+                <div>The light in the upstairs bedroom went out yesterday. Please send someone to fix this</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="prop-start-date">Start Date</h5>
+                <!-- add maintenance request return object here -->
+                <div>The light in the upstairs bedroom went out yesterday. Please send someone to fix this</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="prop-end-date">End Date</h5>
+                <!-- add maintenance request return object here -->
+                <div>The light in the upstairs bedroom went out yesterday. Please send someone to fix this</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
+        </div>
+    </div>  
   </body>
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<!-- Compiled and mnified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="../js/landlord.js"></script>
+<script src="../js/materialize.js"></script>  
 </html>

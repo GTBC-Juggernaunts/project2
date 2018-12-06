@@ -67,8 +67,7 @@
   left:-5px;
   width:175px;
   height:100vh;
-  background:#3C91E6;
-  opacity: .8; 
+  background:#133C55;
   display:flex;
   /* main axis is vertical */
   flex-direction:column;
