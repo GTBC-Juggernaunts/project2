@@ -1,0 +1,118 @@
+{{!-- navigation bar from partiels --}}
+{{> navbar}}
+
+{{!-<!-- main content --> --}}
+<div class="right-side">
+    <div class="jumbotron">
+        <h1 class="display-3">Submit Maintenance Request</h1>
+        <hr class="my-2" />
+    </div>
+
+    <div class="content">
+        {{!--<!-- form for maint request --> --}}
+        <div class="row">
+            {{!--<!-- Name and Image URL or upload --> --}}
+            <div class="input-field col m4">
+                <input placeholder="First and Last Name" id="name" type="text" class="validate" />
+                <label for="name">Name</label>
+            </div>
+            {{!--<!-- grab adddress value here --> --}}
+            <div class="input-field col m4">
+                <input placeholder="Property Address" id="address" type="text" class="validate" />
+                <label for="image">Address</label>
+            </div>
+
+            <div class="input-field col m4">
+                {{!--<!-- grab category value here --> --}}
+                <select id="requestType">
+                    <option value="" disabled selected>Category</option>
+                    <option value="1">Appliances</option>
+                    <option value="2">Electrical</option>
+                    <option value="3">Exterior</option>
+                    <option value="4">HVAC</option>
+                    <option value="5">Plumbing</option>
+                    <option value="6">Ohter</option>
+                </select>
+                <label>Request Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <form class="col m12">
+                <div class="row">
+                    <div class="input-field col m12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Description</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {{!--<!-- end description --> --}}
+        <div class="row">
+            <button id="submitBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
+                Submit <i class="material-icons right">send</i>
+            </button>
+        </div>
+        {{!--<!-- end row 3 form --> --}}
+
+        {{!--<!-- start cards --> --}}
+        <div class="row">
+            {{!--<!-- Request History --> --}}
+            <h5>Request History</h5>
+            <hr class="my-2" />
+
+
+            {{!--<!-- Mainteance Request cards --> --}}
+            {{#each maintRequest}}
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="../images/wrench-icon.png" alt="wrench icon">
+                    </div>
+                    <div class="card-content maint-req-details">
+                        <p>View Request Information</p>
+                    </div>
+                    <div class="card-action">
+                        <button href="#maint-req-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{!--<!-- end maintenance request card --> --}}
+        </div>
+        {{!--<!-- end row 4 --> --}}
+    </div>
+</div>
+{{!-<!-- end main content --> --}}
+
+
+{{!-<!-- Maintenance Request Details Modal --> --}}
+<div id="maint-req-details-modal" class="modal center-align">
+    <div class="modal-content">
+        <div class="fa fa-wrench"></div>
+        <h5>Request Information</h5>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="req-status">Status</h5>
+                {{!--<!-- add maintenance request return object here --> --}}
+                <div>{{this.status}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="req-type">Category</h5>
+                {{!--<!-- add maintenance request return object here --> --}}
+                <div>{{this.reqType}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 push-s4">
+                <h5 class="req-description">Description</h5>
+                {{!--<!-- add maintenance request return object here --> --}}
+                <div>{{this.description}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
+    </div>
+</div>
