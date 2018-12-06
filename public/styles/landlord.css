@@ -41,16 +41,21 @@
   margin-bottom: 15px;
 }
 
-/* main content */
+
+/* main content on the right side*/
+.right-side {
+  margin-left: 175px; 
+}
 
 .content {
-  margin-left: 175px;
+  margin: 15px;
 }
 
 .jumbotron {
-  background-color: transparent !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
+  background-color: transparent !important; 
+  margin-bottom: 0px !important; 
+  margin-left: 10px !important; 
+  padding: 0px 0px !important; 
 }
 
 /* end main content */

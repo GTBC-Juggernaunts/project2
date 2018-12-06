@@ -84,32 +84,34 @@
     <!-- end nav bar -->
 
     <!-- main content -->
-    <div class="content">
+    <div class="right-side">
       <div class="jumbotron">
         <h1 class="display-3">My Properties</h1>
         <p class="lead">Add Property</p>
         <hr class="my-2" />
       </div>
 
-      <!-- start cards -->
-      <div class="row">
-        <!-- property cards -->
-        <div class="col s12 m3">
-          <div class="card">
-            <div class="card-image">
-              <img
-                src="https://cdn.vox-cdn.com/thumbor/SZI_0MOdoxBwcfYVftHcCdLJ2fc=/0x0:1600x1066/1820x1213/filters:focal(642x458:898x714):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60283807/Perry1.0.jpg"
-              />
-              <img
-                src="{{this.imageUrl}}"
-              />
+      <div class="content">
+        <!-- start cards -->
+        <div class="row">
+          <!-- property cards -->
+          <div class="col s12 m3">
+            <div class="card">
+              <div class="card-image">
+                <img
+                  src="https://cdn.vox-cdn.com/thumbor/SZI_0MOdoxBwcfYVftHcCdLJ2fc=/0x0:1600x1066/1820x1213/filters:focal(642x458:898x714):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60283807/Perry1.0.jpg"
+                />
+                <img
+                  src="{{this.imageUrl}}"
+                />
+              </div>
+              <div class="card-content property-details"><p>{{this.propertyAddress}}</p></div>
+              <div class="card-action"><button href="#property-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
             </div>
-            <div class="card-content property-details"><p>{{this.propertyAddress}}</p></div>
-            <div class="card-action"><button href="#property-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
           </div>
+          <!-- end property card -->
         </div>
-        <!-- end property card -->
-      </div>
+      </div>  
     </div>
 
     <!-- Property Details Modal -->
