@@ -19,7 +19,7 @@ CREATE TABLE `landlords` (
 	`email` VARCHAR(255) NOT NULL,
 	`createdtimestamp` DATETIME NOT NULL,
 	`lastupdatedtimestamp` DATETIME NOT NULL,
-	`tenantid` INT NOT NULL,
+	`userid` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -76,6 +76,7 @@ CREATE TABLE `tenants` (
 	`email` VARCHAR(255) NOT NULL,
 	`createdtimestamp` DATETIME NOT NULL,
 	`lastupdatedtimestamp` DATETIME NOT NULL,
+	`userid` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -87,7 +88,9 @@ CREATE TABLE `images` (
 
 ALTER TABLE `properties` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
-ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
+ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`userid`) REFERENCES `users`(`id`);
+
+ALTER TABLE `tenants` ADD CONSTRAINT `tenants_fk0` FOREIGN KEY (`userid`) REFERENCES `users`(`id`);
 
 ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk0` FOREIGN KEY (`requesttypeid`) REFERENCES `requesttypes`(`id`);
 

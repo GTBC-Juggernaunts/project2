@@ -11,14 +11,6 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   tenant.associate = function(models) {
-    tenant.hasMany(models.landlord, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
-  tenant.associate = function(models) {
     tenant.hasMany(models.maintenance, {
       foreignKey: {
         allowNull: false
@@ -28,6 +20,14 @@ module.exports = function(sequelize, DataTypes) {
 
   tenant.associate = function(models) {
     tenant.hasMany(models.lease, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  tenant.associate = function(models) {
+    tenant.belongsTo(models.user, {
       foreignKey: {
         allowNull: false
       }
