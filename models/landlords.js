@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   landlord.associate = function(models) {
-    landlord.hasMany(models.maintenance, {
+    landlord.hasMany(models.maintenancerequest, {
       foreignKey: {
         allowNull: false
       }

@@ -1,34 +1,34 @@
 module.exports = function(sequelize, DataTypes) {
-  const maintenance = sequelize.define("maintenance", {
+  const maintenancerequest = sequelize.define("maintenancerequest", {
     description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   });
 
-  maintenance.associate = function (models) {
-    maintenance.belongsTo(models.landlord, {
+  maintenancerequest.associate = function (models) {
+    maintenancerequest.belongsTo(models.landlord, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  maintenance.associate = function (models) {
-    maintenance.belongsTo(models.tenant, {
+  maintenancerequest.associate = function (models) {
+    maintenancerequest.belongsTo(models.tenant, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  maintenance.associate = function (models) {
-    maintenance.belongsTo(models.requesttype, {
+  maintenancerequest.associate = function (models) {
+    maintenancerequest.belongsTo(models.requesttype, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return maintenance;
+  return maintenancerequest;
 };

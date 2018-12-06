@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   property.associate = function(models) {
-    property.hasMany(models.maintenance, {
+    property.hasMany(models.maintenancerequest, {
       foreignKey: {
         allowNull: false
       }

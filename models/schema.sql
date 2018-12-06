@@ -3,7 +3,7 @@ CREATE DATABASE currentdb;
 
 USE currentdb;
 
-CREATE TABLE `property` (
+CREATE TABLE `properties` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`landlordid` INT NOT NULL,
 	`address` VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `landlords` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `maintenance` (
+CREATE TABLE `maintenancerequests` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`requesttypeid` INT NOT NULL,
 	`description` VARCHAR(255) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `maintenance` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `requesttype` (
+CREATE TABLE `requesttypes` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`type` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
@@ -60,11 +60,11 @@ CREATE TABLE `payments` (
 	`leaseid` INT NOT NULL,
 	`datedue` DATE NOT NULL,
 	`paymentamt` FLOAT NOT NULL,
-	`paymentstatus` INT NOT NULL,
+	`paymentstatusid` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `paymentstatus` (
+CREATE TABLE `paymentstatuses` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`status` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
@@ -85,22 +85,22 @@ CREATE TABLE `images` (
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `property` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
+ALTER TABLE `properties` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
 ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
 
-ALTER TABLE `maintenance` ADD CONSTRAINT `maintenance_fk0` FOREIGN KEY (`requesttypeid`) REFERENCES `requesttype`(`id`);
+ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk0` FOREIGN KEY (`requesttypeid`) REFERENCES `requesttypes`(`id`);
 
-ALTER TABLE `maintenance` ADD CONSTRAINT `maintenance_fk1` FOREIGN KEY (`propertyid`) REFERENCES `property`(`id`);
+ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk1` FOREIGN KEY (`propertyid`) REFERENCES `properties`(`id`);
 
-ALTER TABLE `maintenance` ADD CONSTRAINT `maintenance_fk2` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
+ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk2` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
-ALTER TABLE `maintenance` ADD CONSTRAINT `maintenance_fk3` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
+ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk3` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
 
-ALTER TABLE `leases` ADD CONSTRAINT `leases_fk0` FOREIGN KEY (`propertyid`) REFERENCES `property`(`id`);
+ALTER TABLE `leases` ADD CONSTRAINT `leases_fk0` FOREIGN KEY (`propertyid`) REFERENCES `properties`(`id`);
 
 ALTER TABLE `leases` ADD CONSTRAINT `leases_fk1` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
 
 ALTER TABLE `payments` ADD CONSTRAINT `payments_fk0` FOREIGN KEY (`leaseid`) REFERENCES `leases`(`id`);
 
-ALTER TABLE `payments` ADD CONSTRAINT `payments_fk1` FOREIGN KEY (`paymentstatus`) REFERENCES `paymentstatus`(`id`);
+ALTER TABLE `payments` ADD CONSTRAINT `payments_fk1` FOREIGN KEY (`paymentstatusid`) REFERENCES `paymentstatuses`(`id`);
