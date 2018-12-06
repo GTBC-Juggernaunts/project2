@@ -2,33 +2,122 @@
 {{> navbar}}
 
 <!-- main content -->
-<div class="content">
+<div class="right-side">
     <div class="jumbotron">
-        <h1 class="display-3">My Properties</h1>
-        <p class="lead">Add Property</p>
-        <hr class="my-2" />
+    <h1 class="display-3">My Properties</h1>
+    <hr class="my-2" />
     </div>
 
+    <div class="content">
+        <!-- form for maint request -->
+        <div class="row">
+        <!-- Name and Image URL or upload -->
+        <div class="input-field col m6">
+            <i class="material-icons prefix">person</i> 
+            <input placeholder="First and Last Name" id="tenant-name" type="text" class="validate" />
+            <label for="name">Name</label>
+        </div>
+        <!-- grab adddress value here -->
+        <div class="input-field col m6">
+            <i class="material-icons prefix">home</i>  
+            <input placeholder="Address" id="prop-address" type="text" class="validate" />
+            <label for="image">Property Address</label>
+        </div>            
+        </div>
+        <!-- description -->
+        <div class="row">
+        <div class="input-field col m6">
+            <i class="material-icons prefix">description</i>             
+            <input placeholder="Description" id="prop-description" type="text" data-length="16">                
+            <label for="input_text">Description</label>
+        </div>  
+        <!-- capacity -->
+        <div class="input-field col m6">
+                <i class="material-icons prefix">people</i> 
+                <input placeholder="Payment Amount" id="capacity" type="number" class="validate" />
+            <label for="number">Capacity</label>
+        </div>
+        <!-- Monthly rent -->
+        <div class="input-field col m6">
+                <i class="material-icons prefix">monetization_on</i> 
+                <input placeholder="Rent" id="monthly-rent" type="number" class="validate" />
+            <label for="number">Montlhly Rent</label>
+        </div>
+        </div>
+        <!-- end description -->
+        <div class="row">
+        <button id="submitPropteryBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
+            Add Property <i class="material-icons right">home</i>
+        </button>
+        </div>
     <!-- start cards -->
     <div class="row">
+        <!-- Request History -->
+        <h5>Current Properties</h5>
+        <hr class="my-2" />
         <!-- property cards -->
         <div class="col s12 m3">
+            {{#each property}}
             <div class="card">
                 <div class="card-image">
-                    {{!-- image of property here --}}
-                    <img src="https://cdn.vox-cdn.com/thumbor/SZI_0MOdoxBwcfYVftHcCdLJ2fc=/0x0:1600x1066/1820x1213/filters:focal(642x458:898x714):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60283807/Perry1.0.jpg" />
-                    {{!-- property address from object here --}}
-                    <span class="card-title">100 Peachtree Drive</span>
+                <img
+                    src="https://cdn.vox-cdn.com/thumbor/SZI_0MOdoxBwcfYVftHcCdLJ2fc=/0x0:1600x1066/1820x1213/filters:focal(642x458:898x714):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60283807/Perry1.0.jpg"
+                />
+                <!-- add imageUrl here  -->
+                <img
+                    src="{{this.imageUrl}}"
+                />
                 </div>
-                <div class="card-content property-details">
-                    <p>Property details here.</p>
-                    {{!-- loop through properties object and display info here --}}
-                    {{#each properties}}
-                    {{/each}}
-                </div>
-                <div class="card-action"><button class="btn">Details</button></div>
+                <div class="card-content property-details"><p>{{this.propertyAddress}}</p></div>
+                <div class="card-action"><button href="#property-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
             </div>
+            {{/each}}
         </div>
         <!-- end property card -->
     </div>
+    </div>  
 </div>
+
+<!-- Property Details Modal -->
+<div id="property-details-modal" class="modal modal-fixed-footer center-align">
+    <div class="modal-content">
+        <i class="material-icons">home</i>
+        <h5>Property Information</h5>
+        <div class="row">
+            <div class="col s6">
+                <h5 id="prop-description">Description</h5>
+                <!-- add maintenance request return object here -->
+                <div>{{this.description}}</div>
+            </div>
+            <div class="col s6">
+                <h5 class="prop-capacity">Capacity</h5>
+                <!-- add maintenance request return object here -->
+                <div>{{this.capacity}}</div>
+            </div>
+            <div class="col s6">
+                <h5 class="prop-rent">Monthly Rent</h5>
+                <!-- add maintenance request return object here -->
+                <div>{{this.rent}}</div>
+            </div>
+            <div class="col s6">
+                <h5 class="prop-active">Vacant</h5>
+                <!-- add maintenance request return object here -->
+                <div>{{this.isActive}}</div>
+            </div>
+            <div class="col s6">
+                <h5 class="prop-start-date">Start Date</h5>
+                <!-- add maintenance request return object here -->
+                <div>{{this.startDate}}</div>
+            </div>
+            <div class="col s6">
+                <h5 class="prop-start-date">End Date</h5>
+                <!-- add maintenance request return object here -->
+                <div>{{this.endDate}}</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
+    </div>
+</div>  
