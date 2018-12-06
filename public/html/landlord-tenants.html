@@ -72,108 +72,114 @@
     <!-- end nav bar -->
 
     {{!-- Get navbar from partials --}}
-    {{> navbar}}
-    
-    <!-- main content -->
-    <div class="right-side">
-        <div class="jumbotron">
-            <h1 class="display-3">Tenants</h1>
+{{> navbar}}
+
+<!-- main content -->
+<div class="right-side">
+    <div class="jumbotron">
+        <h1 class="display-3">Tenants</h1>
+        <hr class="my-2" />
+    </div>
+
+    <div class="content">
+        <!-- form for maint request -->
+        <div class="row">
+            <!-- Name and Image URL or upload -->
+            <div class="input-field col m6">
+                <i class="material-icons prefix">person</i>
+                <input placeholder="First and Last Name" id="tenant-name" type="text" class="validate" />
+                <label for="name">Name</label>
+            </div>
+            <!-- Name and Image URL or upload -->
+            <div class="input-field col m6">
+                <i class="material-icons prefix">email</i>
+                <input placeholder="Email Address" id="tenant-email" type="email" class="validate" />
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <!-- grab adddress value here -->
+            <div class="input-field col m6">
+                <i class="material-icons prefix">home</i>
+                <input placeholder="Address" id="property-address" type="text" class="validate" />
+                <label for="address">Property Address</label>
+            </div>
+            <div class="input-field col m6">
+                <i class="material-icons prefix">people</i>
+                <!-- <input placeholder="Active" id="tenant-active" type="text" class="validate" /> -->
+
+                <select id="tenant-active">
+                    <!-- {{!-- <option value="" disabled selected>Category</option> --}} -->
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <label for="text">Tenant Active</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col m6">
+                <i class="material-icons prefix">date_range</i>
+                <input placeholder="Lease Start" id="lease-start-date" type="date">
+                <label for="date">Lease Start Date</label>
+            </div>
+            <div class="input-field col m6">
+                <i class="material-icons prefix">date_range</i>
+                <input placeholder="Lease End" id="lease-end-date" type="date" class="validate" />
+                <label for="date">Lease End Date</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col m6">
+                <i class="material-icons prefix">done</i>
+                <input placeholder="Lease Signed Date" id="lease-sign-date" type="date">
+                <label for="date">Lease Signed On</label>
+            </div>
+        </div>
+        <!-- end description -->
+        <div class="row">
+            <button id="submitTenantBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
+                Add Tenant <i class="material-icons right">person</i>
+            </button>
+        </div>
+
+        <!-- end row 3 form -->
+
+        <!-- start cards -->
+        <div class="row">
+            <!-- Request History -->
+            <h5>Tenant History</h5>
             <hr class="my-2" />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Monthly Rent</th>
+                        <th>Active</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each payment}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.rent}}</td>
+                        <td>{{this.active}}</td>
+                        <td>{{this.startDate}}</td>
+                        <td>{{this.EndDate}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
-    
-        <div class="content">
-            <!-- form for maint request -->
-            <div class="row">
-                <!-- Name and Image URL or upload -->
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">person</i>
-                    <input placeholder="First and Last Name" id="tenant-name" type="text" class="validate" />
-                    <label for="name">Name</label>
-                </div>
-                <!-- Name and Image URL or upload -->
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">email</i>
-                    <input placeholder="Email Address" id="tenant-email" type="email" class="validate" />
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <!-- grab adddress value here -->
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">home</i>
-                    <input placeholder="Address" id="property-address" type="text" class="validate" />
-                    <label for="address">Property Address</label>
-                </div>
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">people</i>
-                    <input placeholder="Active" id="tenant-active" type="text" class="validate" />
-                    <label for="text">Tenant Active</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">date_range</i>
-                    <input placeholder="Lease Start" id="lease-start-date" type="date">
-                    <label for="date">Lease Start Date</label>
-                </div>
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">date_range</i>
-                    <input placeholder="Lease End" id="lease-end-date" type="date" class="validate" />
-                    <label for="date">Lease End Date</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col m6">
-                    <i class="material-icons prefix">done</i>
-                    <input placeholder="Lease Signed Date" id="lease-sign-date" type="date">
-                    <label for="date">Lease Signed On</label>
-                </div>
-            </div>
-            <!-- end description -->
-            <div class="row">
-                <button id="submitTenantBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
-                    Add Tenant <i class="material-icons right">person</i>
-                </button>
-            </div>
-    
-            <!-- end row 3 form -->
-    
-            <!-- start cards -->
-            <div class="row">
-                <!-- Request History -->
-                <h5>Tenant History</h5>
-                <hr class="my-2" />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Monthly Rent</th>
-                            <th>Active</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                        </tr>
-                    </thead>
-    
-                    <tbody>
-                        {{#each payment}}
-                        <tr>
-                            <td>{{this.name}}</td>
-                            <td>{{this.address}}</td>
-                            <td>{{this.rent}}</td>
-                            <td>{{this.active}}</td>
-                            <td>{{this.startDate}}</td>
-                            <td>{{this.EndDate}}</td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-            <!-- end row 4 -->
-        </div>
+        <!-- end row 4 -->
     </div>
-    <!-- end main content right-side-->
-    </div>
+</div>
+<!-- end main content right-side-->
+</div>
            
           
 </body>

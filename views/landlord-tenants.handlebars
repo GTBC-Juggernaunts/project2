@@ -1,7 +1,7 @@
 {{!-- Get navbar from partials --}}
 {{> navbar}}
 
-<!-- main content -->
+{{!-- <!-- main content --> --}}
 <div class="right-side">
     <div class="jumbotron">
         <h1 class="display-3">Tenants</h1>
@@ -9,15 +9,15 @@
     </div>
 
     <div class="content">
-        <!-- form for maint request -->
+        {{!-- <!-- form for maint request --> --}}
         <div class="row">
-            <!-- Name and Image URL or upload -->
+            {{!-- <!-- Name and Image URL or upload --> --}}
             <div class="input-field col m6">
                 <i class="material-icons prefix">person</i>
                 <input placeholder="First and Last Name" id="tenant-name" type="text" class="validate" />
                 <label for="name">Name</label>
             </div>
-            <!-- Name and Image URL or upload -->
+            {{!-- <!-- Name and Image URL or upload --> --}}
             <div class="input-field col m6">
                 <i class="material-icons prefix">email</i>
                 <input placeholder="Email Address" id="tenant-email" type="email" class="validate" />
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="row">
-            <!-- grab adddress value here -->
+            {{!-- <!-- grab adddress value here --> --}}
             <div class="input-field col m6">
                 <i class="material-icons prefix">home</i>
                 <input placeholder="Address" id="property-address" type="text" class="validate" />
@@ -33,7 +33,11 @@
             </div>
             <div class="input-field col m6">
                 <i class="material-icons prefix">people</i>
-                <input placeholder="Active" id="tenant-active" type="text" class="validate" />
+                <select id="tenant-active">
+                    {{!-- <option value="" disabled selected>Category</option> --}}
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>                    
+                </select>
                 <label for="text">Tenant Active</label>
             </div>
         </div>
@@ -56,18 +60,18 @@
                 <label for="date">Lease Signed On</label>
             </div>
         </div>
-        <!-- end description -->
+        {{!-- <!-- end description --> --}}
         <div class="row">
             <button id="submitTenantBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
                 Add Tenant <i class="material-icons right">person</i>
             </button>
         </div>
 
-        <!-- end row 3 form -->
+        {{!-- <!-- end row 3 form --> --}}
 
-        <!-- start cards -->
+        {{!-- <!-- start cards --> --}}
         <div class="row">
-            <!-- Request History -->
+            {{!-- <!-- Request History --> --}}
             <h5>Tenant History</h5>
             <hr class="my-2" />
             <table>
@@ -96,8 +100,8 @@
                 </tbody>
             </table>
         </div>
-        <!-- end row 4 -->
+        {{!-- <!-- end row 4 --> --}}
     </div>
 </div>
-<!-- end main content right-side-->
+{{!-- <!-- end main content right-side--> --}}
 </div>
