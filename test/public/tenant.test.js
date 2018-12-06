@@ -19,4 +19,16 @@ describe("Tenants", () => {
         done();
       });
   });
+
+  // Test GET Routes for Payments
+  it("It should GET all maintenace requests for this tenant", done => {
+    chai
+      .request(server)
+      .get(`/tenant/maintenance/${tenant.id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a("array");
+        done();
+      });
+  });
 });

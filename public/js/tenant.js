@@ -31,13 +31,13 @@ $(function() {
     };
 
     // POST request
-    // $.ajax(`/tenant/payment/${id}`, {
-    //   type: "PUT",
-    //   data: paymentObj
-    // }).then(function() {
-    //   console.log("Payment Submitted Successfuly");
-    //   location.reload();
-    // });
+    $.ajax(`/tenant/payment/${id}`, {
+      type: "PUT",
+      data: paymentObj
+    }).then(function() {
+      console.log("Payment Submitted Successfuly");
+      location.reload();
+    });
 
     console.log(paymentObj);
   });
