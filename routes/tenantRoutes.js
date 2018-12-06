@@ -11,5 +11,8 @@ module.exports = app => {
     res.render("tenant-maint", { maintRequest: "Hello World" });
   });
 
-  // 
+  // Load the payments page when a tenant logs in
+  app.get("/tenant/payment", (req, res) => {
+    res.render("tenant-payment", { maintRequest: "Hello World" });
+  });
 };
