@@ -37,6 +37,30 @@ $(function() {
     console.log(maintId);
   });
 
+  // POST Request for new tenant
+  $("#submitTenantBtn").on("click", function() {
+    // maintenance request object
+    const newTenant = {
+      name: $("#tenant-name").val(),
+      email: $("#tenant-email").val(),
+      address: $("#property-address").val(),
+      active: $("#tenant-active").val(),
+      startDate: $("#lease-start-date").val(),
+      endDate: $("#lease-end-date").val(),
+      signDate: $("#lease-sign-date").val()
+    };
+
+    // PUT request for resolving maintenace request
+    $.ajax("/tenant/maintenance", {
+      type: "PUT",
+      data: newTenant
+    }).then(function() {
+      console.log("new tenant added sucessfully");
+      location.reload();
+    });
+    console.log(newTenant);
+  });
+
   // GET request to pull in maint requests for this tenant
   // take maintenance requests and place them in cards
 });
