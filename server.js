@@ -6,7 +6,7 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 
 var db = require("./models");
-var users = requrie("./models/users.js");
+var users = require("./models/users.js");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -16,13 +16,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 passport.use(new Strategy(
-  function(username, password, done) {
-    users.findOne({ where: (username: username)})
+  function(inputUsername, password, done) {
+    users.findOne({ where: { username: inputUsername } })
       .then(user => {
         console.log(user)
       })
   }
-))
+));
+
 // Handlebars
 app.engine(
   "handlebars",
