@@ -15,14 +15,40 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+// Authentication Middleware
 passport.use(new Strategy(
-  function(inputUsername, password, done) {
+  function(inputUsername, password, callback) {
     users.findOne({ where: { username: inputUsername } })
-      .then(user => {
-        console.log(user)
+      .then(data => {
+        let user = data.map(d => d.get({ plain: true }));
+        console.log(user);
+        if (!user) { return callback(null, false); }
+        if (user.password != password) { return callback(null, false); }
+        return cb(null, user);
       })
   }
 ));
+
+// Authentication Config to Serialize and Deserialize Users to keep their session authenticated
+passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
+
+passport.deserializeUser(function(inputId, cb) {
+  users.findOne({ where: { id: inputId } })
+  .then(data => {
+    let user = data.map(d => d.get({ plain: true }));
+    cb(null, user);
+  });
+});
+
+
+// Initialize Authentication
+app.use(passport.initialize());
+
+// Restore Authentication Session if Present
+app.use(passport.session());
 
 // Handlebars
 app.engine(
