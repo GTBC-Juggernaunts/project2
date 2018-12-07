@@ -3,6 +3,7 @@ $(function() {
   $("#submitBtn").on("click", function() {
     // maintenance request object
     const maintRequest = {
+      name: $("#name").val(),
       requestType: $("#requestType").val(),
       address: $("#address").val(),
       description: $("#description").val()

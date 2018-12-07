@@ -14,9 +14,9 @@ module.exports = app => {
 
     db.maintenancerequest
       .findAll({
-        where: {
-          id: tenantId
-        }
+        // where: {
+        //   id: tenantId
+        // }
       })
       .then(data => {
         console.log(data);
@@ -26,11 +26,18 @@ module.exports = app => {
 
   // POST request to create new maintenance request
   app.post("/tenant/maintenance", (req, res) => {
-    console.log({ maintenanceRequest: req.body });
+    console.log(req.body);
     db.maintenancerequest
-      .create(req.body)
+      .create({
+        description: req.body.description
+      })
       .then(data => {
-        res.json(data);
+        // res.render("tenant-maint", { maintRequest: data });
+        const hbsObj = {
+          maintRequest: data.map(d => d.get({ plain: true }))
+        };
+        // console.log(JSON.stringify(hbsObj,null,2));
+        res.render("tenant-maint", hbsObj);
       })
       .catch(err => {
         res.json(err);
