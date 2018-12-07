@@ -87,10 +87,10 @@ CREATE TABLE `images` (
 );
 
 CREATE TABLE `users` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `username` STRING NOT NULL,
-    `password` STRING NOT NULL,
-    )
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL
+);
 
 ALTER TABLE `properties` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
