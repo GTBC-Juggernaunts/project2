@@ -10,16 +10,24 @@ module.exports = app => {
   app.get("/tenant/maintenance/", (req, res) => {
     // get tenant id from route
     // const tenantId = req.params.id;
-    const tenantId = 1;
+    // const tenantId = 1;
 
     db.maintenancerequest
       .findAll({
-        // where: {
-        //   id: tenantId
-        // }
+        where: { id: 1 },
+        include: [
+          {
+            model: db.requesttype
+          }
+        ]
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
+        // console.log(data);
+        const maintObj = {
+          hbsobj: data.map(d => d.get({ plain: true }))
+        };
+        console.log(maintObj);
         res.render("tenant-maint", { maintRequest: data });
       });
   });

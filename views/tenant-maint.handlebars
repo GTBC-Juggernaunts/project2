@@ -1,7 +1,8 @@
 {{!-- navigation bar from partiels --}}
 {{> tenant-navbar}}
 
-{{!-<!-- main content --> --}}
+{{!-
+<!-- main content --> --}}
 <div class="right-side">
     <div class="jumbotron">
         <h1 class="display-3">Submit Maintenance Request</h1>
@@ -9,21 +10,25 @@
     </div>
 
     <div class="content">
-        {{!--<!-- form for maint request --> --}}
+        {{!--
+        <!-- form for maint request --> --}}
         <div class="row">
-            {{!--<!-- Name and Image URL or upload --> --}}
+            {{!--
+            <!-- Name and Image URL or upload --> --}}
             <div class="input-field col m4">
                 <input placeholder="First and Last Name" id="name" type="text" class="validate" />
                 <label for="name">Name</label>
             </div>
-            {{!--<!-- grab adddress value here --> --}}
+            {{!--
+            <!-- grab adddress value here --> --}}
             <div class="input-field col m4">
                 <input placeholder="Property Address" id="address" type="text" class="validate" />
                 <label for="image">Address</label>
             </div>
 
             <div class="input-field col m4">
-                {{!--<!-- grab category value here --> --}}
+                {{!--
+                <!-- grab category value here --> --}}
                 <select id="requestType">
                     <option value="" disabled selected>Category</option>
                     <option value="1">Appliances</option>
@@ -46,22 +51,27 @@
                 </div>
             </form>
         </div>
-        {{!--<!-- end description --> --}}
+        {{!--
+        <!-- end description --> --}}
         <div class="row">
             <button id="submitBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
                 Submit <i class="material-icons right">send</i>
             </button>
         </div>
-        {{!--<!-- end row 3 form --> --}}
+        {{!--
+        <!-- end row 3 form --> --}}
 
-        {{!--<!-- start cards --> --}}
+        {{!--
+        <!-- start cards --> --}}
         <div class="row">
-            {{!--<!-- Request History --> --}}
+            {{!--
+            <!-- Request History --> --}}
             <h5>Request History</h5>
             <hr class="my-2" />
 
 
-            {{!--<!-- Mainteance Request cards --> --}}
+            {{!--
+            <!-- Mainteance Request cards --> --}}
             {{#each maintRequest}}
             <div class="col s12 m3">
                 <div class="card">
@@ -77,16 +87,58 @@
                     </div>
                 </div>
             </div>
+            {{!-
+            <!-- Maintenance Request Details Modal --> --}}
+            <div id="maint-req-details-modal" class="modal modal-fixed-footer center-align">
+                <div class="modal-content">
+                    <div class="fa fa-wrench"></div>
+                    <h5>Request Information</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col s4 push-s4">
+                            <h5 class="req-status">Status</h5>
+                            {{!--
+                            <!-- add maintenance request return object here --> --}}
+                            <div>{{this.status}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 push-s4">
+                            <hr>
+                            <h5 class="req-type">Category</h5>
+                            {{!--
+                            <!-- add maintenance request return object here --> --}}
+                            <div>{{this.reqType}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 push-s4">
+                            <hr>
+                            <h5 class="req-description">Description</h5>
+                            {{!--
+                            <!-- add maintenance request return object here --> --}}
+                            <div>{{this.description}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
+                </div>
+            </div>
             {{/each}}
-            {{!--<!-- end maintenance request card --> --}}
+            {{!--
+            <!-- end maintenance request card --> --}}
         </div>
-        {{!--<!-- end row 4 --> --}}
+        {{!--
+        <!-- end row 4 --> --}}
     </div>
 </div>
-{{!-<!-- end main content --> --}}
+{{!-
+<!-- end main content --> --}}
 
 
-{{!-<!-- Maintenance Request Details Modal --> --}}
+{{!-
+<!-- Maintenance Request Details Modal --> --}}
 <div id="maint-req-details-modal" class="modal center-align">
     <div class="modal-content">
         <div class="fa fa-wrench"></div>
@@ -94,21 +146,24 @@
         <div class="row">
             <div class="col s4 push-s4">
                 <h5 class="req-status">Status</h5>
-                {{!--<!-- add maintenance request return object here --> --}}
+                {{!--
+                <!-- add maintenance request return object here --> --}}
                 <div>{{this.status}}</div>
             </div>
         </div>
         <div class="row">
             <div class="col s4 push-s4">
                 <h5 class="req-type">Category</h5>
-                {{!--<!-- add maintenance request return object here --> --}}
+                {{!--
+                <!-- add maintenance request return object here --> --}}
                 <div>{{this.reqType}}</div>
             </div>
         </div>
         <div class="row">
             <div class="col s4 push-s4">
                 <h5 class="req-description">Description</h5>
-                {{!--<!-- add maintenance request return object here --> --}}
+                {{!--
+                <!-- add maintenance request return object here --> --}}
                 <div>{{this.description}}</div>
             </div>
         </div>
