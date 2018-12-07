@@ -7,7 +7,9 @@
     "start": "node server.js",
     "lint": "eslint '**/*.js' --quiet",
     "fix": "eslint --fix .",
-    "test": "npm run lint && NODE_ENV=test nyc mocha -u tdd --reporter spec --recursive ./test/**/*.js --exit"
+    "test": "npm run lint && NODE_ENV=test nyc mocha -u tdd --reporter spec --recursive ./test/**/*.js --exit",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
   },
   "license": "ISC",
   "dependencies": {

@@ -23,11 +23,11 @@ module.exports = app => {
       })
       .then(data => {
         // console.log(data);
-        // console.log(data);
         const maintObj = {
           hbsobj: data.map(d => d.get({ plain: true }))
         };
-        console.log(maintObj);
+        // console.log(maintObj);
+        console.log(maintObj.hbsobj[0].requesttype.type);
         res.render("tenant-maint", { maintRequest: data });
       });
   });
