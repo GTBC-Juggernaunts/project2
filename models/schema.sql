@@ -88,6 +88,7 @@ CREATE TABLE `images` (
 
 CREATE TABLE `users` (
     `id` INT NOT NULL AUTO_INCREMENT,
+    `username` STRING NOT NULL,
     `password` STRING NOT NULL,
     )
 
