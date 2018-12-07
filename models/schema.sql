@@ -10,6 +10,8 @@ CREATE TABLE `properties` (
 	`description` VARCHAR(255) NOT NULL,
 	`capacity` INT NOT NULL,
 	`rent` FLOAT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -20,6 +22,8 @@ CREATE TABLE `landlords` (
 	`createdtimestamp` DATETIME NOT NULL,
 	`lastupdatedtimestamp` DATETIME NOT NULL,
 	`tenantid` INT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -31,12 +35,16 @@ CREATE TABLE `maintenancerequests` (
 	`landlordid` INT NOT NULL,
 	`tenantid` INT NOT NULL,
 	`requeststatus` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `requesttypes` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`type` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -52,6 +60,8 @@ CREATE TABLE `leases` (
 	`startdate` DATE NOT NULL,
 	`enddate` DATE NOT NULL,
 	`rent` FLOAT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -61,12 +71,16 @@ CREATE TABLE `payments` (
 	`datedue` DATE NOT NULL,
 	`paymentamt` FLOAT NOT NULL,
 	`paymentstatusid` INT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `paymentstatuses` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`status` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -76,12 +90,16 @@ CREATE TABLE `tenants` (
 	`email` VARCHAR(255) NOT NULL,
 	`createdtimestamp` DATETIME NOT NULL,
 	`lastupdatedtimestamp` DATETIME NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `images` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`imageurl` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
