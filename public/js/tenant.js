@@ -4,7 +4,7 @@ $(function() {
     // maintenance request object
     const maintRequest = {
       requestType: $("#requestType").val(),
-      address: $("#address"),
+      address: $("#address").val(),
       description: $("#description").val()
     };
 

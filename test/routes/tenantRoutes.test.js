@@ -14,7 +14,7 @@ describe("GET /tenant/maintenance", function() {
   // & delete all examples from the db
   beforeEach(function(done) {
     request = chai.request(server);
-    db.sequelize.sync({ force: true }).then(function() {
+    db.sequelize.sync({ force: false }).then(function() {
       done();
     });
   });
@@ -23,9 +23,9 @@ describe("GET /tenant/maintenance", function() {
     // Add some examples to the db to test with
     db.maintenancerequest
       .bulkCreate([
-        { description: "First Description" },
-        { description: "Second Description" },
-        { description: "Third Description" }
+        { description: "First Description", landlordId: 1, requesttypeId: 1, propertyId: 1 },
+        { description: "Second Description", landlordId: 2, requesttypeId: 2, propertyId: 2 },
+        { description: "Third Description", landlordId: 3, requesttypeId: 3, propertyId: 3 }
       ])
       .then(function() {
         // Request the route that returns all examples
@@ -45,13 +45,28 @@ describe("GET /tenant/maintenance", function() {
 
           expect(responseBody[0])
             .to.be.an("object")
-            .that.includes({ description: "First Description" });
+            .that.includes({
+              description: "First Description",
+              landlordId: 1,
+              requesttypeId: 1,
+              propertyId: 1
+            });
           expect(responseBody[1])
             .to.be.an("object")
-            .that.includes({ description: "Second Description" });
+            .that.includes({
+              description: "Second Description",
+              landlordId: 2,
+              requesttypeId: 2,
+              propertyId: 2
+            });
           expect(responseBody[2])
             .to.be.an("object")
-            .that.includes({ description: "Third Description" });
+            .that.includes({
+              description: "Third Description",
+              landlordId: 3,
+              requesttypeId: 3,
+              propertyId: 3
+            });
 
           // The `done` function is used to end any asynchronous tests
           done();
