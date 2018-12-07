@@ -86,6 +86,11 @@ CREATE TABLE `images` (
 	PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `users` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `password` STRING NOT NULL,
+    )
+
 ALTER TABLE `properties` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
 ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`userid`) REFERENCES `users`(`id`);

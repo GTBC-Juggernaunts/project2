@@ -14,7 +14,11 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+passport.use(new Strategy(
+  function(username, password, done) {
 
+  }
+))
 // Handlebars
 app.engine(
   "handlebars",
