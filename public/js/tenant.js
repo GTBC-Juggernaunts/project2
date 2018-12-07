@@ -3,10 +3,12 @@ $(function() {
   $("#submitBtn").on("click", function() {
     // maintenance request object
     const maintRequest = {
-      name: $("#name").val(),
+      // name: $("#name").val(),
       requestType: $("#requestType").val(),
-      address: $("#address").val(),
-      description: $("#description").val()
+      // address: $("#address").val(),
+      description: $("#description").val(),
+      // need landlord id after authenticated
+
     };
 
     //Post request for maintenace request
@@ -32,9 +34,11 @@ $(function() {
     };
 
     // POST request
-    $.ajax(`/tenant/payment/${id}`, {
-      type: "PUT",
-      data: paymentObj
+    // TODO: need to grab the leaseId from HTML somehow
+    $.ajax(`/tenant/payment/2`, {
+      type: "PUT"
+      // ,
+      // data: paymentObj
     }).then(function() {
       console.log("Payment Submitted Successfuly");
       location.reload();

@@ -39,7 +39,7 @@
     <!-- end description -->
     <div class="row">
         <button id="submitPaymentBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
-        Submit <i class="material-icons right">send</i>
+        Pay Now <i class="material-icons right">send</i>
         </button>
     </div>
 
@@ -66,9 +66,9 @@
                     <tr>
                         <td>{{this.name}}</td>
                         <td>{{this.address}}</td>
-                        <td>{{this.price}}</td>
-                        <td>{{this.dueDate}}</td>
-                        <td>{{this.paymentStatus}}</td>
+                        <td>{{this.paymentamt}}</td>
+                        <td>{{this.datedue}}</td>
+                        <td>{{this.paymentstatus.status}}</td>
                     </tr>
                 {{/each}}
             </tbody>

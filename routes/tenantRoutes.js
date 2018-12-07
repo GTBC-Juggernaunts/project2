@@ -23,11 +23,6 @@ module.exports = app => {
       })
       .then(data => {
         // console.log(data);
-        const maintObj = {
-          hbsobj: data.map(d => d.get({ plain: true }))
-        };
-        // console.log(maintObj);
-        console.log(maintObj.hbsobj[0].requesttype.type);
         res.render("tenant-maint", { maintRequest: data });
       });
   });
@@ -37,6 +32,7 @@ module.exports = app => {
     console.log(req.body);
     db.maintenancerequest
       .create({
+        requestType: req.body.requestType,
         description: req.body.description
       })
       .then(data => {
@@ -44,7 +40,7 @@ module.exports = app => {
         const hbsObj = {
           maintRequest: data.map(d => d.get({ plain: true }))
         };
-        // console.log(JSON.stringify(hbsObj,null,2));
+        // console.log(data);
         res.render("tenant-maint", hbsObj);
       })
       .catch(err => {
@@ -55,6 +51,52 @@ module.exports = app => {
 
   // Load the payments page when a tenant logs in
   app.get("/tenant/payment", (req, res) => {
-    res.render("tenant-payment", { maintRequest: "Hello World" });
+    db.payment
+      .findAll({
+        where: { id: 2 },
+        include: [
+          {
+            model: db.paymentstatus
+          }
+          // lease model is not being associated for some reason
+          // ,
+          // {
+          //   model: db.lease
+          // }
+        ]
+      })
+      .then(data => {
+        console.log(data);
+        // console.log(data.payment[0].paymentstatus);
+        res.render("tenant-payment", { payment: data });
+      });
+  });
+
+  // update payments
+  // set paymentstatusid = 1
+  // where leaseid = x
+
+  // PUT request to update payment status to paid
+  app.put("/tenant/payment/:id", (req, res) => {
+    console.log(req.body);
+    db.payment
+      .update(
+        {
+          paymentstatusid: 2
+        },
+        {
+          where: {
+            leaseid: req.params.id
+          }
+        }
+      )
+      .then(data => {
+        console.log(data);
+        res.render("tenant-payment", data);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+    // console.log(res);
   });
 };
