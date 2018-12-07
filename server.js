@@ -17,7 +17,10 @@ app.use(express.json());
 app.use(express.static("public"));
 passport.use(new Strategy(
   function(username, password, done) {
-    users.findOne({})
+    users.findOne({ where: (username: username)})
+      .then(user => {
+        console.log(user)
+      })
   }
 ))
 // Handlebars
