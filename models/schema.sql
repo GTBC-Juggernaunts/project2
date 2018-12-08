@@ -10,6 +10,8 @@ CREATE TABLE `properties` (
 	`description` VARCHAR(255) NOT NULL,
 	`capacity` INT NOT NULL,
 	`rent` FLOAT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -17,9 +19,9 @@ CREATE TABLE `landlords` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`landlordname` VARCHAR(255) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
-	`createdtimestamp` DATETIME NOT NULL,
-	`lastupdatedtimestamp` DATETIME NOT NULL,
-	`userid` INT NOT NULL,
+	`tenantid` INT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -31,12 +33,16 @@ CREATE TABLE `maintenancerequests` (
 	`landlordid` INT NOT NULL,
 	`tenantid` INT NOT NULL,
 	`requeststatus` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `requesttypes` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`type` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -47,11 +53,12 @@ CREATE TABLE `leases` (
 	`leasename` VARCHAR(255) NOT NULL,
 	`binaryfile` BINARY NOT NULL,
 	`signdate` DATE NOT NULL,
-	`updateddate` DATE NOT NULL,
 	`isActive` BOOLEAN NOT NULL,
 	`startdate` DATE NOT NULL,
 	`enddate` DATE NOT NULL,
 	`rent` FLOAT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -61,12 +68,16 @@ CREATE TABLE `payments` (
 	`datedue` DATE NOT NULL,
 	`paymentamt` FLOAT NOT NULL,
 	`paymentstatusid` INT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `paymentstatuses` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`status` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -74,29 +85,22 @@ CREATE TABLE `tenants` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`tenantname` VARCHAR(255) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
-	`createdtimestamp` DATETIME NOT NULL,
-	`lastupdatedtimestamp` DATETIME NOT NULL,
-	`userid` INT NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `images` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`imageurl` VARCHAR(255) NOT NULL,
+	`createdAt` DATETIME NOT NULL,
+	`updatedAt` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `users` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `username` VARCHAR(255) NOT NULL,
-    `password` VARCHAR(255) NOT NULL
 );
 
 ALTER TABLE `properties` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
-ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`userid`) REFERENCES `users`(`id`);
-
-ALTER TABLE `tenants` ADD CONSTRAINT `tenants_fk0` FOREIGN KEY (`userid`) REFERENCES `users`(`id`);
+ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
 
 ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk0` FOREIGN KEY (`requesttypeid`) REFERENCES `requesttypes`(`id`);
 

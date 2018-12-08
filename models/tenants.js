@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const tenant = sequelize.define("tenant", {
-    name: {
+    tenantname: {
       type: DataTypes.STRING,
       allowNull: false
     },
