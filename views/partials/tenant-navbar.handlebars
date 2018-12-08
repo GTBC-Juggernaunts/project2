@@ -1,0 +1,44 @@
+<!-- Nav Bar -->
+    <div class="navbar">
+      <h2 id="logo">CurRent</h2>
+      <!-- default route when clicking logo logged in as tenant -->
+      <a href="/tenant/maintenance">
+        <div class="item">
+          <img
+            id="travis"
+            src="https://dwglogo.com/wp-content/uploads/2017/12/1200px-travis_ci_vector_logo.png"
+            alt="templogo"
+          />
+          <div id="profile">Tenant: {Name}</div>
+        </div>
+      </a>
+      <!-- maintenance -->
+      <a href="/tenant/maintenance">
+        <div class="item">
+          <div class="fa fa-wrench"></div>
+          <div class="label">Maintenance</div>
+        </div>
+      </a>
+      <!-- pay rent -->
+      <a href="/tenant/payment">
+        <div class="item">
+          <div class="fa"><i class="fas fa-money-bill"></i></div>
+          <div class="label">Pay Rent</div>
+        </div>
+      </a>
+      <!-- contracts -->
+      {{!-- <a href="/tenant/contracts">
+        <div class="item">
+          <div class="fa fa-file"></div>
+          <div class="label">Lease Docs</div>
+        </div>
+      </a> --}}
+      <!-- signout -->
+      <a href="/logout">
+        <div class="item">
+          <div class="fa fa-sign-out-alt"></div>
+          <div class="label">Logout</div>
+        </div>
+      </a>
+    </div>
+    <!-- end nav bar -->

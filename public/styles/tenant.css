@@ -71,7 +71,7 @@
   /* main axis is vertical */
   flex-direction:column;
   /* removes rounded corners */
-  border-radius: 0px
+  border-radius: 0px;
 }
 
 /* added anchor tags to each button in the nav bar */
