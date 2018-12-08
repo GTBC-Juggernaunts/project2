@@ -10,6 +10,7 @@ describe("HTML Routes", function() {
     requests = chai.request(server);
   });
 
+  // Test Home Page
   it("should /GET the home page", () => {
     requests.get("/").end((err, res) => {
       var statusCode = res.status;
@@ -19,6 +20,7 @@ describe("HTML Routes", function() {
     });
   });
 
+  // Test About Page
   it("should /GET the about page", () => {
     requests.get("/about-us").end((err, res) => {
       var statusCode = res.status;
@@ -28,15 +30,13 @@ describe("HTML Routes", function() {
     });
   });
 
-  it("should open the registration page", () => {
-    console.log();
-  });
-
-  it("should open the login page", () => {
-    console.log();
-  });
-
+  // Test for 404 error
   it("should catch all routes not defined the login page", () => {
-    console.log();
+    requests.get("/*").end((err, res) => {
+      var statusCode = res.status;
+
+      // Assertions
+      expect(statusCode.to.equal(404));
+    });
   });
 });
