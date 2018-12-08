@@ -1,6 +1,5 @@
-// Dependencies
+// Models
 // *************************************************************
-// model
 const db = require("../models");
 
 // Routes

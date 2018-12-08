@@ -1,5 +1,5 @@
 {{!-- Get navbar from partials --}}
-{{> navbar}}
+{{> landlord-navbar}}
 
 {{!-- <!-- main content --> --}}
 <div class="right-side">
@@ -78,6 +78,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Address</th>
                         <th>Monthly Rent</th>
                         <th>Active</th>
@@ -87,9 +88,10 @@
                 </thead>
 
                 <tbody>
-                    {{#each payment}}
+                    {{#each tenant}}
                     <tr>
-                        <td>{{this.name}}</td>
+                        <td>{{this.tenantname}}</td>
+                        <td>{{this.email}}</td>
                         <td>{{this.address}}</td>
                         <td>{{this.rent}}</td>
                         <td>{{this.active}}</td>
