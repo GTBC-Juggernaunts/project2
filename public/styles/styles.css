@@ -22,8 +22,14 @@ nav > * {
   margin: 0 15px;
 }
 
+nav img {
+  margin-top: 2vh;
+  width: 14vh;
+  height: 14vh;
+}
+
 .nav-wrapper li > a:hover {
-  background-color: #A2D729;
+  color: #A2D729;
 }
 
 /* Modal */
