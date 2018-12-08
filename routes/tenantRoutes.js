@@ -8,13 +8,12 @@ const db = require("../models");
 module.exports = app => {
   // GET request to load maintenance page when a tenant logs in
   app.get("/tenant/maintenance/", (req, res) => {
+    // TODO: get tenantId from HTML after authentication
     // get tenant id from route
     // const tenantId = req.params.id;
-    // const tenantId = 1;
-
     db.maintenancerequest
       .findAll({
-        where: { id: 1 },
+        where: { tenantid: 1 }, // value will be req.params.id
         include: [
           {
             model: db.requesttype
@@ -28,37 +27,40 @@ module.exports = app => {
   });
 
   // POST request to create new maintenance request
+  // TODO: find out why the record is not inserting into DB
+  // and why tenantId needs a default value when using create method
   app.post("/tenant/maintenance", (req, res) => {
-    console.log(req.body);
+    console.log("------------");
+    console.log(req.body.tenantid);
+    console.log("------------");
     db.maintenancerequest
       .create({
-        requestType: req.body.requestType,
-        description: req.body.description
+        requesttypeId: req.body.requesttypeId,
+        description: req.body.description,
+        propertyId: req.body.propertyId,
+        landlordId: req.body.landlordId
+        // tenantid: req.body.tenantid
       })
       .then(data => {
-        // res.render("tenant-maint", { maintRequest: data });
-        const hbsObj = {
-          maintRequest: data.map(d => d.get({ plain: true }))
-        };
         // console.log(data);
-        res.render("tenant-maint", hbsObj);
+        res.json(data);
       })
       .catch(err => {
         res.json(err);
       });
-    // console.log(res);
   });
 
-  // Load the payments page when a tenant logs in
+  // GET all payments where leaseId relates to payment
   app.get("/tenant/payment", (req, res) => {
     db.payment
       .findAll({
-        where: { id: 2 },
+        where: { leaseid: 1 },
         include: [
           {
             model: db.paymentstatus
           }
-          // lease model is not being associated for some reason
+          // TODO: lease model is not being associated for some reason
+          // need this in order to grab
           // ,
           // {
           //   model: db.lease
@@ -72,11 +74,11 @@ module.exports = app => {
       });
   });
 
+  // PUT request to update payment status to paid
+  // TODO: need to do the following update below, currently not updating paymentstatusid
   // update payments
   // set paymentstatusid = 1
   // where leaseid = x
-
-  // PUT request to update payment status to paid
   app.put("/tenant/payment/:id", (req, res) => {
     console.log(req.body);
     db.payment

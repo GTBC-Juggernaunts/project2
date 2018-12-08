@@ -1,14 +1,15 @@
 $(function() {
   // POST Request for Maintenance Request
   $("#submitBtn").on("click", function() {
-    // maintenance request object
     const maintRequest = {
       // name: $("#name").val(),
-      requestType: $("#requestType").val(),
+      requesttypeId: $("#requestType").val(),
       // address: $("#address").val(),
       description: $("#description").val(),
-      // need landlord id after authenticated
-
+      // TODO: need after authentication:
+      landlordId: 1, // maintenancerequest.landlordId,
+      tenantid: 1, // maintenancerequest.tenantId,
+      propertyId: 1 // maintenancerequest.propertyId
     };
 
     //Post request for maintenace request
@@ -34,8 +35,8 @@ $(function() {
     };
 
     // POST request
-    // TODO: need to grab the leaseId from HTML somehow
-    $.ajax(`/tenant/payment/2`, {
+    // TODO: need to grab the leaseId from HTML via data-attribute
+    $.ajax(`/tenant/payment/${id}`, {
       type: "PUT"
       // ,
       // data: paymentObj
@@ -43,10 +44,6 @@ $(function() {
       console.log("Payment Submitted Successfuly");
       location.reload();
     });
-
     console.log(paymentObj);
   });
-
-  // GET request to pull in maint requests for this tenant
-  // take maintenance requests and place them in cards
 });
