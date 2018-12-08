@@ -6,16 +6,14 @@ const db = require("../models");
 // *************************************************************
 module.exports = app => {
   app.post("/login/tenant",
-    passport.authenticate('local'),
-    (req, res) => {
-      res.redirect('/landlord/properties/' + req.user.landlordid);
-    }
+    passport.authenticate('local', { successRedirect: 'tenant/maintenance/' + req.user.tenantid,
+      failureRedirect: '/login',
+      failureFlash: true })
   );
 
   app.post("/login/landlord",
-    passport.authenticate('local'),
-    (req, res) => {
-      res.redirect('/tenant/maintenance/' + req.user.tenantid);
-    }
-  )
+    passport.authenticate('local', { successRedirect: '/landlord/properties/' + req.user.landlordid,
+      failureRedirect: '/login',
+      failureFlash: true })
+  );
 };
