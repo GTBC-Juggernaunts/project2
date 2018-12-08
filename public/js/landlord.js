@@ -11,7 +11,7 @@ $(function() {
     };
 
     //Post request for maintenace request
-    $.ajax("/tenant/maintenance", {
+    $.ajax("/landlord/property", {
       type: "POST",
       data: newProperty
     }).then(function() {
@@ -23,15 +23,16 @@ $(function() {
 
   // PUT Request for resolving maintenance requests
   $("#resolvedBtn").on("click", function() {
+    // TODO: update maint request where maintId =
     // maintenance request object
     const maintId = $(this).data("maint-id");
 
     // PUT request for resolving maintenace request
-    $.ajax("/tenant/maintenance", {
+    $.ajax("/landlord/maintenance", {
       type: "PUT",
       data: maintId
     }).then(function() {
-      console.log("new property added sucessfully");
+      console.log("maintenance request updated");
       location.reload();
     });
     console.log(maintId);
@@ -60,7 +61,4 @@ $(function() {
     });
     console.log(newTenant);
   });
-
-  // GET request to pull in maint requests for this tenant
-  // take maintenance requests and place them in cards
 });
