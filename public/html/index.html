@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Your custom styles -->
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
         </div>
         <div class="row">
             <div class="input-field col s4 push-s4">
-                <select name="login" required>
+                <select name="login" required id="register-user-type">
                     <option value="" disabled selected>Choose an option</option>
                     <option value="Landlord">Landlord</option>
                     <option value="Tenant">Tenant</option>
@@ -52,7 +52,7 @@
                 <label for="register-as">Registering as a ...</label>
             </div>
         </div>
-        <form action="/register" method="POST">
+        <form>
             <div class="row">
                 <div class="input-field col s4 push-s2">
                     <input type="text" name="first-name" id="first-name">
@@ -77,7 +77,7 @@
             </div>
         </form>
         <div class="modal-footer">
-            <a href="#!" type="submit" class="modal-close waves-effect btn-flat">Sign-up</a>
+            <a href="#!" type="submit" class="modal-close waves-effect btn-flat" id="sign-up">Sign-up</a>
             <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
         </div>
     </div>
@@ -88,10 +88,10 @@
             <i class="material-icons medium prefix">person</i>
             <h4>Login</h4>
         </div>
-        <form action="/login" method="POST">
+        <form>
             <div class="row">
                 <div class="input-field col s4 push-s4">
-                    <select name="login" required>
+                    <select name="login" required id="login-user-type">
                         <option value="" disabled selected>Choose an option</option>
                         <option value="Landlord">Landlord</option>
                         <option value="Tenant">Tenant</option>
@@ -107,14 +107,14 @@
             </div>
             <div class="row">
                 <div class="input-field col s4 push-s4">
-                    <input type="text" name="login-password" id="login-password">
+                    <input type="password" name="login-password" id="login-password">
                     <label for="login-password">Password</label>
                 </div>
             </div>
         </form>
         <div class="modal-footer">
             <!-- Post to DB -->
-            <a href="#!" class="modal-close waves-effect btn-flat">Login</a>
+            <a href="#!" class="modal-close waves-effect btn-flat" id="login">Login</a>
             <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
         </div>
     </div>
@@ -150,6 +150,7 @@
     crossorigin="anonymous"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="../js/materialize.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/home.js"></script>
 
 </html>
