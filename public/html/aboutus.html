@@ -28,23 +28,23 @@
         <div class="nav-wrapper ocean-blue">
             <a href="#" class="brand-logo">Logo</a>
             <ul id="nav-mobile nav-links" class="right hide-on-med-and-down">
-                <li><a class='waves-effect waves-light' href="/public/html/index.html">Home</a></li>
-                <li><a class='waves-effect waves-light' href="/public/html/aboutus.html">About Us</a></li>
+                <li><a class='waves-effect waves-light' href="/">Home</a></li>
+                <li><a class='waves-effect waves-light' href="/about-us">About Us</a></li>
                 <li><a class='waves-effect waves-light modal-trigger' href="#register-modal">Register</a></li>
                 <li><a class='waves-effect waves-light modal-trigger' href="#login-modal">Login</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Register Modal -->
-    <div id="register-modal" class="modal center-align">
+     <!-- Registration Modal -->
+     <div id="register-modal" class="modal center-align">
         <div class="modal-content">
             <i class="material-icons medium">receipt</i>
-            <h4>Register with CurRent</h4>
+            <h4>Registration</h4>
         </div>
         <div class="row">
             <div class="input-field col s4 push-s4">
-                <select name="login" required>
+                <select name="login" required id="register-user-type">
                     <option value="" disabled selected>Choose an option</option>
                     <option value="Landlord">Landlord</option>
                     <option value="Tenant">Tenant</option>
@@ -52,30 +52,32 @@
                 <label for="register-as">Registering as a ...</label>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s4 push-s2">
-                <input type="text" id="first-name">
-                <label for="first-name">First Name</label>
+        <form>
+            <div class="row">
+                <div class="input-field col s4 push-s2">
+                    <input type="text" name="first-name" id="first-name">
+                    <label for="first-name">First Name</label>
+                </div>
+                <div class="input-field col s4 push-s2">
+                    <input type="text" name="last-name" id="last-name">
+                    <label for="last-name">Last Name</label>
+                </div>
             </div>
-            <div class="input-field col s4 push-s2">
-                <input type="text" id="last-name">
-                <label for="last-name">Last Name</label>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="text" name="email" id="email">
+                    <label for="email">Email</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s4 push-s4">
-                <input type="text" id="email">
-                <label for="email">Email</label>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="password" name="password" id="password">
+                    <label for="password">Password</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s4 push-s4">
-                <input type="password" id="password">
-                <label for="password">Password</label>
-            </div>
-        </div>
+        </form>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect btn-flat">Sign-up</a>
+            <a href="#!" type="submit" class="modal-close waves-effect btn-flat" id="sign-up">Sign-up</a>
             <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
         </div>
     </div>
@@ -86,34 +88,37 @@
             <i class="material-icons medium prefix">person</i>
             <h4>Login</h4>
         </div>
-        <div class="row">
-            <div class="input-field col s4 push-s4">
-                <select name="login" required>
-                    <option value="" disabled selected>Choose an option</option>
-                    <option value="Landlord">Landlord</option>
-                    <option value="Tenant">Tenant</option>
-                </select>
-                <label for="login-as">Logging in as ...</label>
+        <form>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <select name="login" required id="login-user-type">
+                        <option value="" disabled selected>Choose an option</option>
+                        <option value="Landlord">Landlord</option>
+                        <option value="Tenant">Tenant</option>
+                    </select>
+                    <label for="login-as">Logging in as ...</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s4 push-s4">
-                <input type="text" id="username">
-                <label for="username">Username</label>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="text" name="username" id="username">
+                    <label for="username">Username</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s4 push-s4">
-                <input type="text" id="password">
-                <label for="password">Password</label>
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input type="password" name="login-password" id="login-password">
+                    <label for="login-password">Password</label>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="modal-footer">
             <!-- Post to DB -->
-            <a href="#!" class="modal-close waves-effect btn-flat">Login</a>
+            <a href="#!" class="modal-close waves-effect btn-flat" id="login">Login</a>
             <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
         </div>
     </div>
+
 
     <!-- Main -->
     <main>
