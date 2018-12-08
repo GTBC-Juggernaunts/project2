@@ -6,7 +6,6 @@ var passport = require("passport");
 var Strategy = require("passport-local").Strategy;
 
 var db = require("./models");
-var users = require("./models/users.js");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -19,17 +18,21 @@ app.use(express.static("public"));
 // Authentication Middleware
 passport.use(
   new Strategy(function(inputUsername, password, callback) {
-    users.findOne({ where: { username: inputUsername } }).then(data => {
-      let user = data.map(d => d.get({ plain: true }));
-      console.log(user);
-      if (!user) {
-        return callback(null, false);
-      }
-      if (user.password !== password) {
-        return callback(null, false);
-      }
-      return cb(null, user);
-    });
+    db.user
+      .findOne({
+        where: { username: inputUsername }
+      })
+      .then(data => {
+        // let user = data.map(d => d.get({ plain: true }));
+        let user = data;
+        if (!user) {
+          return callback(null, false);
+        }
+        if (user.password !== password) {
+          return callback(null, false);
+        }
+        return callback(null, user);
+      });
   })
 );
 
@@ -39,7 +42,7 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(inputId, cb) {
-  users.findOne({ where: { id: inputId } }).then(data => {
+  db.user.findOne({ where: { id: inputId } }).then(data => {
     let user = data.map(d => d.get({ plain: true }));
     cb(null, user);
   });
