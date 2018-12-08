@@ -10,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-
   landlord.associate = function(models) {
     landlord.hasMany(models.property, {
       foreignKey: {
