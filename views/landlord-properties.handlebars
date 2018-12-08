@@ -65,7 +65,7 @@
                         <img src="{{this.imageUrl}}" />
                     </div>
                     <div class="card-content property-details">
-                        <p>{{this.propertyAddress}}</p>
+                        <p>{{this.address}}</p>
                     </div>
                     <div class="card-action"><button href="#property-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
                 </div>
@@ -75,6 +75,11 @@
                         <i class="material-icons">home</i>
                         <h5>Property Information</h5>
                         <div class="row">
+                            {{!-- <div class="col s6">
+                                <h5 id="prop-description">Description</h5>
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.address}}</div>
+                            </div> --}}
                             <div class="col s6">
                                 <h5 id="prop-description">Description</h5>
                                 <!-- add maintenance request return object here -->
@@ -95,7 +100,7 @@
                                 <!-- add maintenance request return object here -->
                                 <div>{{this.isActive}}</div>
                             </div>
-                            <div class="col s6">
+                            {{!-- <div class="col s6">
                                 <h5 class="prop-start-date">Start Date</h5>
                                 <!-- add maintenance request return object here -->
                                 <div>{{this.startDate}}</div>
@@ -104,7 +109,7 @@
                                 <h5 class="prop-start-date">End Date</h5>
                                 <!-- add maintenance request return object here -->
                                 <div>{{this.endDate}}</div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>

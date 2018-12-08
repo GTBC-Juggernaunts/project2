@@ -8,11 +8,17 @@ module.exports = app => {
   // GET all properties for this landlord
   // TODO: need to get the landlordId from the handlebars to add as param in route
   app.get("/landlord/properties", (req, res) => {
-    db.property
+    db.lease
       .findAll({
-        where: { landlordid: 1 }
+        // where: { landlordid: 1 },
+        include: [
+          {
+            model: db.property
+          }
+        ]
       })
       .then(data => {
+        console.log(data);
         res.render("landlord-properties", { property: data });
       });
   });
@@ -22,10 +28,10 @@ module.exports = app => {
   app.get("/landlord/tenants", (req, res) => {
     db.tenant
       .findAll({
-        // where: { landlord: 1 }
+        where: { landlord: 1 }
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
         res.render("landlord-tenants", { tenant: data });
       });
   });
