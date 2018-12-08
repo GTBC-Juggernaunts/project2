@@ -21,6 +21,7 @@ $(function() {
         .val()
         .trim()
     };
+    console.log(registration); // TODO: Clear from linting
     console.log(`Name: ${regName}\nEmail: ${email}\nPassword: ${password}`);
   });
 
