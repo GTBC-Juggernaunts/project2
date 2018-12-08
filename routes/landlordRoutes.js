@@ -17,6 +17,8 @@ module.exports = app => {
       });
   });
 
+  // GET all tenants for this landlord
+  // TODO: get all tenants
   app.get("/landlord/tenants", (req, res) => {
     db.tenant
       .findAll({
@@ -26,5 +28,13 @@ module.exports = app => {
         console.log(data);
         res.render("landlord-tenants", { tenant: data });
       });
+  });
+
+  // GET all maintenance requests for this landlord
+  // TODO: get all maint reqs by maintId
+  app.get("/landlord/maintenance", (req, res) => {
+    db.maintenancerequest.findAll({}).then(data => {
+      res.render("landlord-maint", { maintRequests: data });
+    });
   });
 };
