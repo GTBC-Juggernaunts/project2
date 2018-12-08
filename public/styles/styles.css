@@ -3,7 +3,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url('/public/images/waves3.jpg');
+  background-image: url('/images/waves3.jpg');
   background-size: cover;
   opacity: .7;
 }
