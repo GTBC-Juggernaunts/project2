@@ -16,18 +16,14 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
 
-  landlord.associate = function(models) {
-    landlord.hasMany(models.maintenancerequest, {
+    landlord.belongsTo(models.user, {
       foreignKey: {
         allowNull: false
       }
     });
-  };
 
-  landlord.associate = function(models) {
-    landlord.belongsTo(models.user, {
+    landlord.hasMany(models.maintenancerequest, {
       foreignKey: {
         allowNull: false
       }

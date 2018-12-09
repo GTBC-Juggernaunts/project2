@@ -12,17 +12,11 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
 
-  maintenancerequest.associate = function(models) {
     maintenancerequest.belongsTo(models.tenant, {
-      foreignKey: {
-        allowNull: false
-      }
+      foreignKey: "tenantid"
     });
-  };
 
-  maintenancerequest.associate = function(models) {
     maintenancerequest.belongsTo(models.requesttype, {
       foreignKey: {
         allowNull: false
