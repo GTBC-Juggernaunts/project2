@@ -10,12 +10,13 @@ module.exports = app => {
   app.get("/landlord/properties", (req, res) => {
     db.lease
       .findAll({
-        // where: { landlordid: 1 },
-        include: [
-          {
-            model: db.property
-          }
-        ]
+        where: { tenantid: 1 }
+        // ,
+        // include: [
+        //   {
+        //     model: db.property
+        //   }
+        // ]
       })
       .then(data => {
         console.log(data);
@@ -28,7 +29,7 @@ module.exports = app => {
   app.get("/landlord/tenants", (req, res) => {
     db.tenant
       .findAll({
-        where: { landlord: 1 }
+        where: { id: 1 }
       })
       .then(data => {
         // console.log(data);
