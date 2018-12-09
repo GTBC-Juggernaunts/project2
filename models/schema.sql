@@ -3,7 +3,7 @@ CREATE DATABASE currentdb;
 
 USE currentdb;
 
-CREATE TABLE `properties` (
+/* CREATE TABLE `properties` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`landlordid` INT NOT NULL,
 	`address` VARCHAR(255) NOT NULL,
@@ -126,4 +126,4 @@ ALTER TABLE `leases` ADD CONSTRAINT `leases_fk1` FOREIGN KEY (`tenantid`) REFERE
 
 ALTER TABLE `payments` ADD CONSTRAINT `payments_fk0` FOREIGN KEY (`leaseid`) REFERENCES `leases`(`id`);
 
-ALTER TABLE `payments` ADD CONSTRAINT `payments_fk1` FOREIGN KEY (`paymentstatusid`) REFERENCES `paymentstatuses`(`id`);
+ALTER TABLE `payments` ADD CONSTRAINT `payments_fk1` FOREIGN KEY (`paymentstatusid`) REFERENCES `paymentstatuses`(`id`); */
