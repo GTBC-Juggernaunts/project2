@@ -7,21 +7,41 @@ const db = require("../models");
 module.exports = app => {
   // GET all properties for this landlord
   // TODO: need to get the landlordId from the handlebars to add as param in route
+  // uncomment below when were able to pass landlordid after authentication
+  //   app.get("/landlord/properties/:id", (req, res) => {
   app.get("/landlord/properties", (req, res) => {
-    db.lease
+    db.property
       .findAll({
-        where: { tenantid: 1 }
-        // ,
-        // include: [
-        //   {
-        //     model: db.property
-        //   }
-        // ]
+        where: { landlordId: 3 },
+        // TODO: uncomment below when we are able to pass landlord id
+        // where: { landlordId: req.params.id },
+        include: [
+          {
+            model: db.lease,
+            as: "lease"
+          },
+          {
+            model: db.landlord
+          },
+          {
+            model: db.maintenancerequest
+          }
+        ]
       })
       .then(data => {
         console.log(data);
         res.render("landlord-properties", { property: data });
       });
+  });
+
+  // POST for creating new proerpty
+  // TODO: uncomment below to create a propety and relate it to the logged in landlord
+//   app.post("/landlord/properties/:id", (req, res) => {
+  app.post("/landlord/properties", (req, res) => {
+    db.property.create({
+        address: req.params.address,
+
+    })
   });
 
   // GET all tenants for this landlord
