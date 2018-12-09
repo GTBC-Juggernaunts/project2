@@ -98,9 +98,19 @@ CREATE TABLE `images` (
 	PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `users` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `tenantid` INT,
+    `landlordid` INT
+);
+
 ALTER TABLE `properties` ADD CONSTRAINT `property_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
 
-ALTER TABLE `landlords` ADD CONSTRAINT `landlords_fk0` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
+ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`landlordid`) REFERENCES `landlords`(`id`);
+
+ALTER TABLE `users` ADD CONSTRAINT `users_fk1` FOREIGN KEY (`tenantid`) REFERENCES `tenants`(`id`);
 
 ALTER TABLE `maintenancerequests` ADD CONSTRAINT `maintenance_fk0` FOREIGN KEY (`requesttypeid`) REFERENCES `requesttypes`(`id`);
 

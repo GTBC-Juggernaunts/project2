@@ -11,14 +11,6 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   landlord.associate = function(models) {
-    landlord.belongsTo(models.tenant, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
-  landlord.associate = function(models) {
     landlord.hasMany(models.property, {
       foreignKey: {
         allowNull: false
@@ -33,5 +25,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
+
+  landlord.associate = function(models) {
+    landlord.belongsTo(models.user, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return landlord;
 };
