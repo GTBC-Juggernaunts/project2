@@ -24,21 +24,16 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
 
-  property.associate = function(models) {
-    property.hasMany(models.lease, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
-  property.associate = function(models) {
     property.hasMany(models.maintenancerequest, {
       foreignKey: {
         allowNull: false
       }
+    });
+
+    property.hasMany(models.lease, {
+      foreignKey: "propertyid",
+      as: "lease"
     });
   };
 
