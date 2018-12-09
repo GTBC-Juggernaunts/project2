@@ -67,10 +67,10 @@
                     <div class="card-content property-details">
                         <p>{{this.address}}</p>
                     </div>
-                    <div class="card-action"><button href="#property-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
+                    <div class="card-action"><button href="#property-details-modal{{this.id}}" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button></div>
                 </div>
                 <!-- Property Details Modal -->
-                <div id="property-details-modal" class="modal modal-fixed-footer center-align">
+                <div id="property-details-modal{{this.id}}" class="modal modal-fixed-footer center-align">
                     <div class="modal-content">
                         <i class="material-icons">home</i>
                         <h5>Property Information</h5>
