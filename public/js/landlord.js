@@ -54,7 +54,7 @@ $(function() {
     };
 
     // PUT request for resolving maintenace request
-    $.ajax("/tenant/maintenance", {
+    $.ajax("/landlord/maintenance", {
       type: "PUT",
       data: newTenant
     }).then(function() {

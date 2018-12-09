@@ -12,9 +12,9 @@ module.exports = app => {
   app.get("/landlord/properties", (req, res) => {
     db.property
       .findAll({
-        where: { landlordId: 3 },
         // TODO: uncomment below when we are able to pass landlord id
         // where: { landlordId: req.params.id },
+        where: { landlordId: 3 },
         include: [
           {
             model: db.lease,
@@ -59,13 +59,31 @@ module.exports = app => {
   app.get("/landlord/tenants", (req, res) => {
     db.tenant
       .findAll({
-        where: { id: 1 }
+        // where: { tenantid: 3 }
+        // ,
+        // include: [
+        //   {
+        //     model: db.tenant
+        //   }
+        // ,
+        //   {
+        //     model: db.payment
+        //   }
+        // ]
       })
       .then(data => {
-        // console.log(data);
+        console.log(data);
         res.render("landlord-tenants", { tenant: data });
       });
   });
+
+  // POST to create tenant/lease
+  app.post("/landlord/maintenance", (req,res) => {
+    db.tenant.create({
+
+    })
+  });
+
 
   // GET all maintenance requests for this landlord
   // TODO: get all maint reqs by maintId
