@@ -4,7 +4,7 @@
 <!-- main content -->
 <div class="right-side">
     <div class="jumbotron">
-        <h1 class="display-3">My Properties</h1>
+        <h3 class="display-3">My Properties</h3>
         <hr class="my-2" />
     </div>
 
@@ -56,11 +56,11 @@
             <h5>Current Properties</h5>
             <hr class="my-2" />
             <!-- property cards -->
-            <div class="col s12 m3">
-                {{#each property}}
+            {{#each property}}
+            <div class="col s3 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://cdn.vox-cdn.com/thumbor/SZI_0MOdoxBwcfYVftHcCdLJ2fc=/0x0:1600x1066/1820x1213/filters:focal(642x458:898x714):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60283807/Perry1.0.jpg" />
+                        <img src="https://cdn.dribbble.com/users/851350/screenshots/4553026/otovo_01_gif_3.gif" />
                         <!-- add imageUrl here  -->
                         <img src="{{this.imageUrl}}" />
                     </div>
@@ -98,9 +98,11 @@
                             <div class="col s6">
                                 <h5 class="prop-active">Vacant</h5>
                                 <!-- add maintenance request return object here -->
-                                <div>{{this.lease}}</div>
-                                <div>{{this.maintenancerequest.description}}</div>
-                                <div>{{this.landlord.name}}</div>
+                                {{#if this.lease.0.isactive}}
+                                <div>Yes</div>
+                                {{else}}
+                                <div>No</div>
+                                {{/if}}
                             </div>
                             {{!-- <div class="col s6">
                                 <h5 class="prop-start-date">Start Date</h5>
@@ -119,8 +121,8 @@
                         <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
                     </div>
                 </div>
-                {{/each}}
             </div>
+            {{/each}}
             <!-- end property card -->
         </div>
     </div>

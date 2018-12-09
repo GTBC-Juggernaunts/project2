@@ -36,12 +36,22 @@ module.exports = app => {
 
   // POST for creating new proerpty
   // TODO: uncomment below to create a propety and relate it to the logged in landlord
-//   app.post("/landlord/properties/:id", (req, res) => {
+  //   app.post("/landlord/properties/:id", (req, res) => {
   app.post("/landlord/properties", (req, res) => {
-    db.property.create({
-        address: req.params.address,
-
-    })
+    db.property
+      .create({
+        address: req.body.address,
+        description: req.body.description,
+        capacity: req.body.capacity,
+        rent: req.body.rent,
+        landlordId: req.body.landlordId // req.params.id will get this from data attribute
+      })
+      .then(data => {
+        res.json(data);
+      })
+      .catch(error => {
+        res.json(error);
+      });
   });
 
   // GET all tenants for this landlord

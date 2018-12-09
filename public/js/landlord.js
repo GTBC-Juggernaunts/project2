@@ -1,17 +1,19 @@
 $(function() {
   // POST Request for Landlord Properties
   $("#submitPropteryBtn").on("click", function() {
+    event.preventDefault();
     // maintenance request object
     const newProperty = {
       tenantName: $("#tenant-name").val(),
-      address: $("#prop-address"),
+      address: $("#prop-address").val(),
       description: $("#prop-description").val(),
       capacity: $("#capacity").val(),
-      rent: $("#monthly-rent").val()
+      rent: $("#monthly-rent").val(),
+      landlordId: 3
     };
 
     //Post request for maintenace request
-    $.ajax("/landlord/property", {
+    $.ajax("/landlord/properties", {
       type: "POST",
       data: newProperty
     }).then(function() {
