@@ -31,9 +31,7 @@ module.exports = app => {
             }
           })
           .then(data => {
-            console.log(data);
             tenantID = data.id;
-            console.log(tenantID);
             return res.json({ route: "/tenant/maintenance/" + tenantID });
           });
         console.log(tenantID);
@@ -62,5 +60,48 @@ module.exports = app => {
         return res.redirect(302, "/landlord/properties");
       });
     })(req, res, next);
+  });
+
+  // Register a new landlord or tenant
+  app.post("/register", function(req, res) {
+    // Search for a user that exist first
+    db.user
+      .findOne({
+        where: {
+          username: req.body.email
+        }
+      })
+      .then(data => {
+        // if we find existing user
+        if (data) {
+          return res.status(451).json({ statusCode: 451, status: "error" });
+        } else {
+          db.user
+            .create({
+              username: req.body.email,
+              password: req.body.password
+            })
+            .then(data => {
+              //create the appropriate record in either landlords or tenants
+              if (req.body.userType === "Landlord") {
+                console.log("------data below-------");
+                console.log(data.id);
+                db.landlord.create({
+                  name: req.body.name,
+                  email: req.body.email,
+                  userId: data.id
+                });
+              } else {
+                db.tenant.create({
+                  name: req.body.name,
+                  email: req.body.email,
+                  userId: data.id
+                });
+              }
+              res.json({ statusCode: 201, status: "Created" });
+              res.redirect(201, "/");
+            });
+        }
+      });
   });
 };
