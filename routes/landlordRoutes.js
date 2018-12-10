@@ -105,8 +105,29 @@ module.exports = app => {
   // GET all maintenance requests for this landlord
   // TODO: get all maint reqs by maintId
   app.get("/landlord/maintenance", (req, res) => {
-    db.maintenancerequest.findAll({}).then(data => {
-      res.render("landlord-maint", { maintRequests: data });
-    });
+    db.maintenancerequest
+      .findAll({
+        where: { landlordId: 1 },
+        include: [
+          {
+            model: db.requesttype
+          }
+        ]
+      })
+      .then(data => {
+        console.log(data);
+        res.render("landlord-maint", { maintRequests: data });
+      });
+  });
+
+  // DELETE to resolve the maintenance request
+  app.delete("/landlord/maintenance/:id", (req, res) => {
+    db.maintenancerequest
+      .destroy({
+        where: { id: req.params.id }
+      })
+      .then(data => {
+        res.json(data);
+      });
   });
 };
