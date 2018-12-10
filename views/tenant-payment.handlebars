@@ -38,7 +38,7 @@
         <!-- end description -->
         <div class="row">
             <button id="submitPaymentBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action"
-                data-lease="{{#each payment}}{{this.leaseId}}{{/each}}">
+                {{#with maintRequest.[0]}}data-lease="{{leaseId}}" data-tenantid="{{tenantId}}" {{/with}}>
                 Pay Now <i class="material-icons right">send</i>
             </button>
         </div>
@@ -62,13 +62,13 @@
                 </thead>
 
                 <tbody>
-                    {{#each payment}}
+                    {{#each maintRequest}}
                     <tr>
                         <td>{{this.name}}</td>
                         <td>{{this.address}}</td>
                         <td>{{formatNumber this.paymentamt style="currency" currency="USD"}}</td>
                         <td>{{formatDate this.datedue}}</td>
-                        <td>{{this.paymentstatus.status}}</td>
+                        <td>{{this.status}}</td>
                     </tr>
                     {{/each}}
                 </tbody>

@@ -16,13 +16,13 @@
 
                 <!-- grab category value here -->
                 <select id="requestType">
-                    <option value="" disabled selected>Category</option>
+                    <option value="" disabled value>Category</option>
                     <option value="1">Appliances</option>
                     <option value="2">Electrical</option>
                     <option value="3">Exterior</option>
                     <option value="4">HVAC</option>
                     <option value="5">Plumbing</option>
-                    <option value="6">Other</option>
+                    <option value="6" selected>Other</option>
                 </select>
                 <label>Request Type</label>
             </div>
@@ -108,8 +108,7 @@
 </div>
 <!-- end main content -->
 
-{{!-
-<!-- Maintenance Request Details Modal --> --}}
+<!-- Maintenance Request Details Modal -->
 <div id="maint-req-details-modal" class="modal modal-fixed-footer center-align">
     <div class="modal-content">
         <div class="fa fa-wrench"></div>

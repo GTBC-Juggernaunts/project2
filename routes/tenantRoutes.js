@@ -53,6 +53,7 @@ module.exports = app => {
        p.paymentamt,
        ps.status,
        l.tenantId,
+       l.id as leaseId,
        t.name,
        pr.address
        FROM payments p
