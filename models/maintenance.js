@@ -14,7 +14,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     maintenancerequest.belongsTo(models.tenant, {
-      foreignKey: "tenantId"
+      foreignKey: {
+        allowNull: false
+      }
     });
 
     maintenancerequest.belongsTo(models.requesttype, {

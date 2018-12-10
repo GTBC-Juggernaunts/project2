@@ -8,9 +8,11 @@ $(function() {
 
     const maintRequest = {
       requesttypeId: $("#requestType").val(),
-      description: $("#description").val(),
+      description: $("#description")
+        .val()
+        .trim(),
       landlordId: landlordId,
-      tenantid: tenantId,
+      tenantId: tenantId,
       propertyId: property
     };
 

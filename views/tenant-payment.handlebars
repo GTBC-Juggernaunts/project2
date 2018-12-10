@@ -1,47 +1,4 @@
-{{!-- navigation bar from partials --}}
-{{!-- {{> tenant-navbar}} --}}
-
-<!-- Nav Bar -->
-<div class="navbar">
-    <h2 id="logo">CurRent</h2>
-
-
-    <!-- default route when clicking logo logged in as tenant -->
-    <a href="/tenant/maintenance/{{#with payment.[0]}}{{tenantid}}{{/with}}">
-        <div class="item">
-            <img id="travis" src="https://dwglogo.com/wp-content/uploads/2017/12/1200px-travis_ci_vector_logo.png" alt="templogo" />
-            <div id="profile" {{#with payment.[0]}} data-tenantid="{{tenantid}}">Tenant: {{tenant.name}}{{/with}}</div>
-        </div>
-    </a>
-
-    <!-- maintenance -->
-    <a href="/tenant/maintenance/{{#with payment.[0]}}{{tenantid}}{{/with}}">
-        <div class="item">
-            <div class="fa fa-wrench"></div>
-            <div class="label">Maintenance</div>
-        </div>
-    </a>
-
-    <!-- pay rent -->
-    <a href="/tenant/payment/{{#with payment.[0]}}{{tenantid}}{{/with}}">
-        <div class="item">
-            <div class="fa"><i class="fas fa-money-bill"></i></div>
-            <div class="label">Pay Rent</div>
-        </div>
-    </a>
-
-    <!-- Sign Out -->
-    <a href="/logout">
-        <div class="item">
-            <div class="fa fa-sign-out-alt"></div>
-            <div class="label">Logout</div>
-        </div>
-    </a>
-</div>
-
-
-<!-- end nav bar -->
-
+{{> tenant-navbar}}
 
 <!-- main content -->
 <div class="right-side">
