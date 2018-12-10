@@ -70,13 +70,7 @@ $(function() {
         }
       })
         .done(data => {
-          console.log(typeof data);
-          console.log(data);
-          if (data) {
-            window.location.replace(data.route);
-          } else {
-            console.log("clear the form");
-          }
+          window.location.replace(data.route);
         })
         .catch(() => {
           // console.log("PLEASE HELP");
