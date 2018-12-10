@@ -21,7 +21,7 @@ module.exports = app => {
       })
       .then(data => {
         // console.log(data);
-        res.render("tenant-maint", { maintRequest: data });
+        res.status(200).render("tenant-maint", { maintRequest: data });
       });
   });
 
@@ -31,14 +31,15 @@ module.exports = app => {
   app.post("/tenant/maintenance", (req, res) => {
     console.log("------------");
     console.log(req.body.tenantid);
+    console.log("POSTING NOW");
     console.log("------------");
     db.maintenancerequest
       .create({
         requesttypeId: req.body.requesttypeId,
         description: req.body.description,
         propertyId: req.body.propertyId,
-        landlordId: req.body.landlordId
-        // tenantid: req.body.tenantid
+        landlordId: req.body.landlordId,
+        tenantid: req.body.tenantid
       })
       .then(data => {
         // console.log(data);
