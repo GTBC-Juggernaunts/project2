@@ -1,5 +1,6 @@
 // *************************************************************
 var passport = require("passport");
+var db = require("../models");
 
 // Routes
 // *************************************************************
@@ -10,28 +11,47 @@ module.exports = app => {
       if (err) {
         return next(err); // Not sure what this does
       }
+
       if (!user) {
-        return res.redirect("/").status(401); // If login/password don't match
+        console.log("Wrong user");
+        return res.redirect(401, "/"); // If login/password don't match
       }
+
       // Logs user in for session
       req.logIn(user, function(err) {
+        let tenantID;
         if (err) {
           return next(err);
         }
-        // Directs user to tenant maintenance page on successful login
-        return res.redirect("/tenant/maintenance");
+
+        db.tenant
+          .findOne({
+            where: {
+              userid: user.id
+            }
+          })
+          .then(data => {
+            console.log(data);
+            tenantID = data.id;
+            console.log(tenantID);
+            return res.json({ route: "/tenant/maintenance/" + tenantID });
+          });
+        console.log(tenantID);
+        return;
       });
     })(req, res, next);
   });
 
   // Landlord login
   app.post("/login/landlord", function(req, res, next) {
+    console.log(req.body);
     passport.authenticate("local", function(err, user) {
+      console.log(user);
       if (err) {
         return next(err);
       }
       if (!user) {
-        return res.redirect("/").status(401); //on failed login redirects to root page
+        return res.redirect(401, "/"); //on failed login redirects to root page
       }
       //Logs user in for session
       req.logIn(user, function(err) {
@@ -39,7 +59,7 @@ module.exports = app => {
           return next(err);
         }
         // Directs user to properties page
-        return res.redirect("/landlord/properties");
+        return res.redirect(302, "/landlord/properties");
       });
     })(req, res, next);
   });
