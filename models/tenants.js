@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 
   tenant.associate = function(models) {
     tenant.hasMany(models.maintenancerequest, {
-      foreignKey: "tenantid",
+      foreignKey: "tenantId",
       as: "maintenancerequest"
     });
 

@@ -18,6 +18,7 @@ module.exports = app => {
         ]
       })
       .then(data => {
+        console.log(data);
         res.status(200).render("tenant-maint", { maintRequest: data });
       });
   });
@@ -58,11 +59,20 @@ module.exports = app => {
             include: [
               {
                 model: db.paymentstatus
+              },
+              {
+                model: db.lease,
+                include: [
+                  {
+                    model: db.tenant
+                  }
+                ]
               }
             ]
           })
           .then(paymentData => {
-            res.render("tenant-payment", { payment: paymentData });
+            console.log(paymentData);
+            res.render("tenant-payment", { maintRequest: paymentData });
           });
       });
   });

@@ -16,9 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
 
-  payment.associate = function(models) {
     payment.belongsTo(models.paymentstatus, {
       foreignKey: {
         allowNull: false

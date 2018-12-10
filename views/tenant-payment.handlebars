@@ -1,68 +1,111 @@
 {{!-- navigation bar from partials --}}
-{{> tenant-navbar}}
+{{!-- {{> tenant-navbar}} --}}
+
+<!-- Nav Bar -->
+<div class="navbar">
+    <h2 id="logo">CurRent</h2>
+
+
+    <!-- default route when clicking logo logged in as tenant -->
+    <a href="/tenant/maintenance/{{#with payment.[0]}}{{tenantid}}{{/with}}">
+        <div class="item">
+            <img id="travis" src="https://dwglogo.com/wp-content/uploads/2017/12/1200px-travis_ci_vector_logo.png" alt="templogo" />
+            <div id="profile" {{#with payment.[0]}} data-tenantid="{{tenantid}}">Tenant: {{tenant.name}}{{/with}}</div>
+        </div>
+    </a>
+
+    <!-- maintenance -->
+    <a href="/tenant/maintenance/{{#with payment.[0]}}{{tenantid}}{{/with}}">
+        <div class="item">
+            <div class="fa fa-wrench"></div>
+            <div class="label">Maintenance</div>
+        </div>
+    </a>
+
+    <!-- pay rent -->
+    <a href="/tenant/payment/{{#with payment.[0]}}{{tenantid}}{{/with}}">
+        <div class="item">
+            <div class="fa"><i class="fas fa-money-bill"></i></div>
+            <div class="label">Pay Rent</div>
+        </div>
+    </a>
+
+    <!-- Sign Out -->
+    <a href="/logout">
+        <div class="item">
+            <div class="fa fa-sign-out-alt"></div>
+            <div class="label">Logout</div>
+        </div>
+    </a>
+</div>
+
+
+<!-- end nav bar -->
+
 
 <!-- main content -->
 <div class="right-side">
     <div class="jumbotron">
-    <h1 class="display-3">Submit Payment</h1>
-    <hr class="my-2" />
+        <h1 class="display-3">Submit Payment</h1>
+        <hr class="my-2" />
     </div>
 
     <div class="content">
-    <!-- form for maint request -->
-    <div class="row">
-        <!-- Name and Image URL or upload -->
-        <div class="input-field col m6">
-        <i class="material-icons prefix">person</i> 
-        <input placeholder="First and Last Name" id="paymentName" type="text" class="validate" />
-        <label for="name">Name</label>
+        <!-- form for maint request -->
+        <div class="row">
+            <!-- Name and Image URL or upload -->
+            <div class="input-field col m6">
+                <i class="material-icons prefix">person</i>
+                <input placeholder="First and Last Name" id="paymentName" type="text" class="validate" />
+                <label for="name">Name</label>
+            </div>
+            <!-- grab address value here -->
+            <div class="input-field col m6">
+                <i class="material-icons prefix">home</i>
+                <input placeholder="Address" id="paymentAddress" type="text" class="validate" />
+                <label for="image">Billing Address</label>
+            </div>
         </div>
-        <!-- grab address value here -->
-        <div class="input-field col m6">
-        <i class="material-icons prefix">home</i>  
-        <input placeholder="Address" id="paymentAddress" type="text" class="validate" />
-        <label for="image">Billing Address</label>
-        </div>            
-    </div>
-    <div class="row">
-        <div class="input-field col m6">
-        <i class="material-icons prefix">payment</i>             
-        <input placeholder="Card Number" id="cardNumber" type="text" data-length="16">                
-        <label for="input_text">Card Number</label>
-        </div>  
-    <div class="input-field col m6">
-            <i class="material-icons prefix">monetization_on</i> 
-            <input placeholder="Payment Amount" id="paymentAmount" type="text" class="validate" />
-        <label for="number">Amount</label>
-    </div>
-    </div>
-    <!-- end description -->
-    <div class="row">
-        <button id="submitPaymentBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action" data-lease="{{#each payment}}{{this.leaseId}}{{/each}}">
-        Pay Now <i class="material-icons right">send</i>
-        </button>
-    </div>
+        <div class="row">
+            <div class="input-field col m6">
+                <i class="material-icons prefix">payment</i>
+                <input placeholder="Card Number" id="cardNumber" type="text" data-length="16">
+                <label for="input_text">Card Number</label>
+            </div>
+            <div class="input-field col m6">
+                <i class="material-icons prefix">monetization_on</i>
+                <input placeholder="Payment Amount" id="paymentAmount" type="text" class="validate" />
+                <label for="number">Amount</label>
+            </div>
+        </div>
+        <!-- end description -->
+        <div class="row">
+            <button id="submitPaymentBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action"
+                data-lease="{{#each payment}}{{this.leaseId}}{{/each}}">
+                Pay Now <i class="material-icons right">send</i>
+            </button>
+        </div>
 
-    <!-- end row 3 form -->
+        <!-- end row 3 form -->
 
-    <!-- start cards -->
-    <div class="row">
-        <!-- Request History -->
-        <h5>Payment History</h5>
-        <hr class="my-2" />
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Property Address</th>
-                    <th>Monthly Price</th>
-                    <th>Due Date</th>
-                    <th>Payment Status</th>
-                </tr>
-            </thead>
-    
-            <tbody>
-                {{#each payment}}
+        <!-- start cards -->
+        <div class="row">
+            <!-- Request History -->
+            <h5>Payment History</h5>
+            <hr class="my-2" />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Property Address</th>
+                        <th>Monthly Price</th>
+                        <th>Due Date</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each payment}}
                     <tr>
                         <td>{{this.name}}</td>
                         <td>{{this.address}}</td>
@@ -70,11 +113,11 @@
                         <td>{{formatDate this.datedue}}</td>
                         <td>{{this.paymentstatus.status}}</td>
                     </tr>
-                {{/each}}
-            </tbody>
-        </table>           
-    </div>
-    <!-- end row 4 -->
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <!-- end row 4 -->
     </div>
 </div>
 <!-- end main content right-side-->
