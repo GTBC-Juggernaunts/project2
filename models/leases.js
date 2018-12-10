@@ -36,17 +36,13 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
 
-  lease.associate = function(models) {
     lease.belongsTo(models.tenant, {
       foreignKey: {
         allowNull: false
       }
     });
-  };
 
-  lease.associate = function(models) {
     lease.hasMany(models.payment, {
       foreignKey: {
         allowNull: false

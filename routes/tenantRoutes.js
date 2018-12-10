@@ -18,19 +18,21 @@ module.exports = app => {
         ]
       })
       .then(data => {
+        console.log(data);
         res.status(200).render("tenant-maint", { maintRequest: data });
       });
   });
 
   // POST request to create new maintenance request
   app.post("/tenant/maintenance", (req, res) => {
+    console.log(req.body);
     db.maintenancerequest
       .create({
         requesttypeId: req.body.requesttypeId,
         description: req.body.description,
         propertyId: req.body.propertyId,
         landlordId: req.body.landlordId,
-        tenantid: req.body.tenantid
+        tenantId: req.body.tenantId
       })
       .then(data => {
         res.json(data);
@@ -42,28 +44,27 @@ module.exports = app => {
 
   // GET all payments where leaseId relates to payment
   app.get("/tenant/payment/:id", (req, res) => {
-    db.lease
-      .findOne({
-        where: {
-          tenantid: req.params.id
-        }
-      })
-      .then(leaseData => {
-        console.log(leaseData);
-        db.payment
-          .findAll({
-            where: {
-              leaseid: leaseData.id
-            },
-            include: [
-              {
-                model: db.paymentstatus
-              }
-            ]
-          })
-          .then(paymentData => {
-            res.render("tenant-payment", { payment: paymentData });
-          });
+    tenantID = req.params.id;
+
+    db.sequelize
+      .query(
+        `SELECT
+       p.datedue,
+       p.paymentamt,
+       ps.status,
+       l.tenantId,
+       t.name,
+       pr.address
+       FROM payments p
+       INNER JOIN paymentstatuses ps on ps.id = p.paymentstatusId
+       INNER JOIN leases l on l.id = p.leaseId
+       INNER JOIN tenants t on l.tenantId = ${tenantID}
+       INNER JOIN properties pr on l.propertyid = pr.id`,
+        { type: db.Sequelize.QueryTypes.SELECT }
+      )
+      .then(returndata => {
+        console.log(returndata);
+        res.status(200).render("tenant-payment", { maintRequest: returndata });
       });
   });
 

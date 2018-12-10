@@ -12,8 +12,9 @@ module.exports = function(sequelize, DataTypes) {
 
   tenant.associate = function(models) {
     tenant.hasMany(models.maintenancerequest, {
-      foreignKey: "tenantid",
-      as: "maintenancerequest"
+      foreignKey: {
+        allowNull: false
+      }
     });
 
     tenant.belongsTo(models.user, {

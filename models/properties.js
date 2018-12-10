@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     property.hasMany(models.lease, {
-      foreignKey: "propertyid",
+      foreignKey: "propertyId",
       as: "lease"
     });
   };

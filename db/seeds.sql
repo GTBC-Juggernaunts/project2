@@ -1,47 +1,38 @@
 USE currentdb;
 
--- Tenant 
-INSERT INTO tenants 
-(tenantname, email, createdAt, updatedAt)
-VALUES
-('Darron', 'darron@aol.com', now(), now());
+-- users
+insert into users
+(username, password, createdAt, updatedAt)
+values
+('mike', 'mike', now(), now());
+
+insert into users
+(username, password, createdAt, updatedAt)
+values
+('darron', 'darron', now(), now());
 
 -- Landlord
-INSERT INTO landlords 
-(landlordname, email, tenantid, createdAt, updatedAt)
-VALUES
-('Mike', 'mike@hotmail.com', 1, now(), now());
+insert into landlords 
+(name, email,createdAt, updatedAt, userId)
+values
+('Mike', 'mike@hotmail.com', now(), now(), 1);
+
+-- Tenant 
+insert into tenants 
+(name, email, createdAt, updatedAt, userId)
+values
+('Darron', 'darron@aol.com', now(), now(), 2);
 
 -- Property
-INSERT INTO properties
-(landlordid, address, description, capacity, rent, createdAt, updatedAt)
-VALUES
-(1, '123 Peachtree Street, Atlanta, GA', 'Condo', 2, 1600, now(), now());
-
--- Leases
-INSERT INTO leases
-(propertyid, tenantid, leasename, binaryfile, signdate, isActive, startdate, enddate, rent, createdAt, updatedAt)
-VALUES 
-(1, 1, 'Condo Lease: Mike', 0, now(), 1, now(), now(), 1600, now(), now());
-
--- Payment Status
-INSERT INTO paymentstatuses
-(id, status, createdAt, updatedAt)
-VALUES
-(1, 'Paid', now(), now()),
-(2, 'Not Paid', now(), now()), 
-(3, 'Late', now(), now());
-
--- Payments
-INSERT INTO payments
-(leaseid, datedue, paymentamt, paymentstatusid, createdAt, updatedAt)
-VALUES 
-(1, now(), 1600, 1, now(), now()); 
+insert into properties
+(address, description, capacity, rent, createdAt, updatedAt, landlordId)
+values
+('123 Peachtree Street, Atlanta, GA', 'Condo', 2, 1600, now(), now(), 1);
 
 -- Maintenance Request Types
-INSERT INTO requesttypes
+insert into requesttypes
 (type, createdAt, updatedAt)
-VALUES
+values
 ('Appliances', now(), now()),
 ('Electrical', now(), now()),
 ('Exterior', now(), now()),
@@ -49,8 +40,29 @@ VALUES
 ('Plumbing', now(), now()),
 ('Other', now(), now());
 
--- Maintenance
-INSERT INTO maintenancerequests
-(requesttypeid, description, propertyid, landlordid, tenantid, requeststatus, createdAt, updatedAt)
-VALUES
-(5, 'the toilet flooded my condo', 1, 1, 1, 0, now(), now());
+-- Leases
+insert into leases
+(leasename, binaryfile, signdate, isActive, startdate, enddate, rent, createdAt, updatedAt, propertyid, tenantid)
+values 
+('Condo Lease: Mike', 0, now(), 1, now(), now(), 1600, now(), now(), 1, 1);
+
+
+-- Payment Status
+insert into paymentstatuses
+(id, status, createdAt, updatedAt)
+values
+(1, 'Paid', now(), now()),
+(2, 'Not Paid', now(), now()), 
+(3, 'Late', now(), now());
+
+-- Payments
+insert into payments
+(datedue, paymentamt, createdAt, updatedAt, leaseid, paymentstatusid)
+values 
+(now(), 1600, now(), now(), 1,1); 
+
+-- Maintenance Requests
+INSERT INTO maintenancerequests 
+(description,createdAt,updatedAt,landlordId,tenantid, requesttypeId,propertyId) 
+VALUES 
+('Electricity is out',now(),now(),1,1,2,1);
