@@ -15,7 +15,7 @@
             <div class="input-field col m6">
                 <i class="material-icons prefix">person</i>
                 <input placeholder="First and Last Name" id="tenant-name" type="text" class="validate" />
-                <label for="name">Name</label>
+                <label for="name">Tenant Name</label>
             </div>
             {{!-- <!-- Name and Image URL or upload --> --}}
             <div class="input-field col m6">
@@ -78,10 +78,11 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
+                        {{!-- <th>Email</th> --}}
+                        {{!-- <th>Address</th> --}}
                         <th>Monthly Rent</th>
                         <th>Active</th>
+                        <th>Sign Date</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                     </tr>
@@ -90,13 +91,14 @@
                 <tbody>
                     {{#each tenant}}
                     <tr>
-                        <td>{{this.name}}</td>
-                        <td>{{this.email}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.rent}}</td>
-                        <td>{{this.active}}</td>
-                        <td>{{this.startDate}}</td>
-                        <td>{{this.EndDate}}</td>
+                        <td>{{this.leasename}}</td>
+                        {{!-- <td>{{this.email}}</td> --}}
+                        {{!-- <td>{{this.address}}</td> --}}
+                        <td>{{formatNumber this.rent style="currency" currency="USD"}}</td>
+                        <td>{{this.isactive}}</td>
+                        <td>{{formatDate this.signdate}}</td>
+                        <td>{{formatDate this.startdate}}</td>
+                        <td>{{formatDate this.enddate}}</td>                    
                     </tr>
                     {{/each}}
                 </tbody>

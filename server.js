@@ -1,6 +1,8 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var Handlebars = require("handlebars");
+var HandlebarsIntl = require("handlebars-intl");
 
 var passport = require("passport");
 var Strategy = require("passport-local").Strategy;
@@ -10,6 +12,7 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+HandlebarsIntl.registerWith(Handlebars);
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

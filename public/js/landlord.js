@@ -9,8 +9,9 @@ $(function() {
       description: $("#prop-description").val(),
       capacity: $("#capacity").val(),
       rent: $("#monthly-rent").val(),
-      landlordId: 3
+      landlordId: 1
     };
+    console.log(newProperty);
 
     //Post request for maintenace request
     $.ajax("/landlord/properties", {
@@ -42,6 +43,7 @@ $(function() {
 
   // POST Request for new tenant
   $("#submitTenantBtn").on("click", function() {
+    event.preventDefault();
     // maintenance request object
     const newTenant = {
       name: $("#tenant-name").val(),
@@ -51,11 +53,12 @@ $(function() {
       startDate: $("#lease-start-date").val(),
       endDate: $("#lease-end-date").val(),
       signDate: $("#lease-sign-date").val()
+      // TODO: need to send propertyId and landlordId
     };
 
     // PUT request for resolving maintenace request
-    $.ajax("/landlord/maintenance", {
-      type: "PUT",
+    $.ajax("/landlord/tenants", {
+      type: "POST",
       data: newTenant
     }).then(function() {
       console.log("new tenant added sucessfully");

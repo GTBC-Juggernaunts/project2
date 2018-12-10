@@ -14,7 +14,7 @@ module.exports = app => {
       .findAll({
         // TODO: uncomment below when we are able to pass landlord id
         // where: { landlordId: req.params.id },
-        where: { landlordId: 3 },
+        where: { landlordId: 1 },
         include: [
           {
             model: db.lease,
@@ -22,9 +22,6 @@ module.exports = app => {
           },
           {
             model: db.landlord
-          },
-          {
-            model: db.maintenancerequest
           }
         ]
       })
@@ -57,7 +54,7 @@ module.exports = app => {
   // GET all tenants for this landlord
   // TODO: get all tenants
   app.get("/landlord/tenants", (req, res) => {
-    db.tenant
+    db.lease
       .findAll({
         // where: { tenantid: 3 }
         // ,
@@ -78,12 +75,32 @@ module.exports = app => {
   });
 
   // POST to create tenant/lease
-  app.post("/landlord/maintenance", (req,res) => {
-    db.tenant.create({
-
-    })
+  app.post("/landlord/tenants", (req, res) => {
+    const newLease = {
+      leasename: req.body.name,
+      signdate: req.body.signDate,
+      startdate: req.body.startDate,
+      enddate: req.body.endDate,
+      binaryfile: 1,
+      isactive: req.body.active,
+      landlordId: 1,
+      propertyid: 3
+    };
+    db.lease
+      .create(
+        newLease
+        // , {
+        // include: [
+        //   {
+        //     model: db.tenant
+        //   }
+        // ]
+        //   }
+      )
+      .then(data => {
+        res.json(data);
+      });
   });
-
 
   // GET all maintenance requests for this landlord
   // TODO: get all maint reqs by maintId
