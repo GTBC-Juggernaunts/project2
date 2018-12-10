@@ -21,15 +21,17 @@ module.exports = app => {
         ]
       })
       .then(data => {
-        console.log(data);
+        console.log("------experiment below--------");
         res.render("landlord-properties", { property: data });
       });
   });
 
   // POST for creating new property
-  // TODO: uncomment below to create a property and relate it to the logged in landlord
-  //   app.post("/landlord/properties/:id", (req, res) => {
-  app.post("/landlord/properties", (req, res) => {
+
+  app.post("/landlord/properties/", (req, res) => {
+
+    console.log("--- Post received ---");
+    console.log(req.body);
     db.property
       .create({
         address: req.body.address,

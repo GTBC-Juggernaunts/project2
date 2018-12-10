@@ -68,7 +68,7 @@ module.exports = app => {
           .then(data => {
             landlordId = data.id;
             // Directs user to properties page
-            return res.json({ route: "/landlord/properties" + landlordId});
+            return res.json({ route: "/landlord/properties/" + landlordId});
           });
       });
     })(req, res, next);
