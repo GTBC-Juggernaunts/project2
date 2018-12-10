@@ -63,4 +63,45 @@ module.exports = app => {
       });
     })(req, res, next);
   });
+
+  // Register a new landlord or tenant
+  app.post("/register", function(req, res) {
+    // Search for a user that exist first
+    db.user
+      .findOne({
+        where: {
+          username: req.body.email
+        }
+      })
+      .then(data => {
+        if (data) {
+          return res.redirect(451, "/");
+        } else {
+          db.user
+            .create({
+              username: req.body.email,
+              password: req.body.password
+            })
+            .then(data => {
+              //create the appropriate record in either landlords or tenants
+              if (req.body.userType === "Landlord") {
+                console.log("------data below-------");
+                console.log(data.id);
+                db.landlord.create({
+                  name: req.body.name,
+                  email: req.body.email,
+                  userId: data.id
+                });
+              } else {
+                db.tenant.create({
+                  name: req.body.name,
+                  email: req.body.email,
+                  userId: data.id
+                });
+              }
+              res.redirect("/");
+            });
+        }
+      });
+  });
 };
