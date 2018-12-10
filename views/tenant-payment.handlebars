@@ -1,4 +1,4 @@
-{{!-- navigation bar from partiels --}}
+{{!-- navigation bar from partials --}}
 {{> tenant-navbar}}
 
 <!-- main content -->
@@ -17,7 +17,7 @@
         <input placeholder="First and Last Name" id="paymentName" type="text" class="validate" />
         <label for="name">Name</label>
         </div>
-        <!-- grab adddress value here -->
+        <!-- grab address value here -->
         <div class="input-field col m6">
         <i class="material-icons prefix">home</i>  
         <input placeholder="Address" id="paymentAddress" type="text" class="validate" />
@@ -55,7 +55,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Property Address</th>
-                    <th>Montly Price</th>
+                    <th>Monthly Price</th>
                     <th>Due Date</th>
                     <th>Payment Status</th>
                 </tr>
@@ -66,8 +66,8 @@
                     <tr>
                         <td>{{this.name}}</td>
                         <td>{{this.address}}</td>
-                        <td>{{this.paymentamt}}</td>
-                        <td>{{this.datedue}}</td>
+                        <td>{{formatNumber this.paymentamt style="currency" currency="USD"}}</td>
+                        <td>{{formatDate this.datedue}}</td>
                         <td>{{this.paymentstatus.status}}</td>
                     </tr>
                 {{/each}}
