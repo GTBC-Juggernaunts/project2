@@ -29,11 +29,13 @@ $(function() {
     // TODO: update maint request where maintId =
     // maintenance request object
     const maintId = $(this).data("maint-id");
+    console.log(maintId);
 
     // PUT request for resolving maintenace request
-    $.ajax("/landlord/maintenance", {
-      type: "PUT",
-      data: maintId
+    $.ajax(`/landlord/maintenance/${maintId}`, {
+      type: "DELETE"
+      // ,
+      // data: maintId
     }).then(function() {
       console.log("maintenance request updated");
       location.reload();
