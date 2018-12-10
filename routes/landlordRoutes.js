@@ -41,7 +41,7 @@ module.exports = app => {
         description: req.body.description,
         capacity: req.body.capacity,
         rent: req.body.rent,
-        landlordId: req.body.landlordId // req.params.id will get this from data attribute
+        landlordId: req.body.landlordId //TODO: req.params.id will get this from data attribute
       })
       .then(data => {
         res.json(data);
@@ -52,7 +52,8 @@ module.exports = app => {
   });
 
   // GET all tenants for this landlord
-  // TODO: get all tenants
+  // TODO: get all tenants by landlordId
+  // this field doesn't exist in lease model
   app.get("/landlord/tenants", (req, res) => {
     db.lease
       .findAll({
@@ -83,8 +84,8 @@ module.exports = app => {
       enddate: req.body.endDate,
       binaryfile: 1,
       isactive: req.body.active,
-      landlordId: 1,
-      propertyid: 3
+      landlordId: 1, // TODO: need landlord id as req.body.landlordId
+      propertyid: 3 // TODO: need propertyId as req.body.propertyId
     };
     db.lease
       .create(
@@ -107,6 +108,8 @@ module.exports = app => {
   app.get("/landlord/maintenance", (req, res) => {
     db.maintenancerequest
       .findAll({
+        // TODO: uncomment below out when landlordid is able to be passed
+        // where: { landlordId: req.params.landlordId },
         where: { landlordId: 1 },
         include: [
           {
