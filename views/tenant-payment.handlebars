@@ -38,7 +38,7 @@
     </div>
     <!-- end description -->
     <div class="row">
-        <button id="submitPaymentBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
+        <button id="submitPaymentBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action" data-lease="{{#each payment}}{{this.leaseId}}{{/each}}">
         Pay Now <i class="material-icons right">send</i>
         </button>
     </div>
