@@ -1,9 +1,7 @@
 // Models
-// *************************************************************
 const db = require("../models");
 
 // Routes
-// *************************************************************
 module.exports = app => {
   // GET request to load maintenance page when a tenant logs in
   app.get("/tenant/maintenance/:id", (req, res) => {
@@ -20,19 +18,12 @@ module.exports = app => {
         ]
       })
       .then(data => {
-        console.log(data);
         res.status(200).render("tenant-maint", { maintRequest: data });
       });
   });
 
   // POST request to create new maintenance request
-  // TODO: find out why the record is not inserting into DB
-  // and why tenantId needs a default value when using create method
   app.post("/tenant/maintenance", (req, res) => {
-    console.log("------------");
-    console.log(req.body.tenantid);
-    console.log("POSTING NOW");
-    console.log("------------");
     db.maintenancerequest
       .create({
         requesttypeId: req.body.requesttypeId,
@@ -42,7 +33,6 @@ module.exports = app => {
         tenantid: req.body.tenantid
       })
       .then(data => {
-        // console.log(data);
         res.json(data);
       })
       .catch(err => {
@@ -72,7 +62,6 @@ module.exports = app => {
             ]
           })
           .then(paymentData => {
-            console.log(paymentData);
             res.render("tenant-payment", { payment: paymentData });
           });
       });
@@ -93,7 +82,6 @@ module.exports = app => {
         }
       )
       .then(data => {
-        console.log(data);
         res.render("tenant-payment", data);
       })
       .catch(err => {
