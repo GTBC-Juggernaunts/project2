@@ -1,5 +1,5 @@
 {{!-- navigation bar from partiels --}}
-{{> navbar}}
+{{> landlord-navbar}}
 
 <!-- main content -->
 <div class="right-side">
@@ -30,6 +30,42 @@
                         <button id="resolvedBtn" data-maint-id="{{this.id}}" class="btn waves-effect waves-light ocean-blue">Resolved</button>
                     </div>
                 </div>
+                <!-- Maintenance Request Details Modal -->
+                {{!-
+                <!-- Maintenance Request Details Modal --> --}}
+                <div id="maint-req-details-modal" class="modal center-align">
+                    <div class="modal-content">
+                        <div class="fa fa-wrench"></div>
+                        <h5>Request Information</h5>
+                        <div class="row">
+                            <div class="col s4 push-s4">
+                                <h5 class="req-status">Status</h5>
+                                {{!--
+                                <!-- add maintenance request return object here --> --}}
+                                <div>{{this.status}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4 push-s4">
+                                <h5 class="req-type">Category</h5>
+                                {{!--
+                                <!-- add maintenance request return object here --> --}}
+                                <div>{{this.reqType}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4 push-s4">
+                                <h5 class="req-description">Description</h5>
+                                {{!--
+                                <!-- add maintenance request return object here --> --}}
+                                <div>{{this.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
+                    </div>
+                </div>
                 {{/each}}
             </div>
             <!-- end property card -->
@@ -38,37 +74,3 @@
     </div>
 </div>
 <!-- end main content -->
-
-
-<!-- Maintenance Request Details Modal -->
-{{!-<!-- Maintenance Request Details Modal --> --}}
-<div id="maint-req-details-modal" class="modal center-align">
-    <div class="modal-content">
-        <div class="fa fa-wrench"></div>
-        <h5>Request Information</h5>
-        <div class="row">
-            <div class="col s4 push-s4">
-                <h5 class="req-status">Status</h5>
-                {{!--<!-- add maintenance request return object here --> --}}
-                <div>{{this.status}}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s4 push-s4">
-                <h5 class="req-type">Category</h5>
-                {{!--<!-- add maintenance request return object here --> --}}
-                <div>{{this.reqType}}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s4 push-s4">
-                <h5 class="req-description">Description</h5>
-                {{!--<!-- add maintenance request return object here --> --}}
-                <div>{{this.description}}</div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
-    </div>
-</div>
