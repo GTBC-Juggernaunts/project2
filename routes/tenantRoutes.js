@@ -6,13 +6,13 @@ const db = require("../models");
 // *************************************************************
 module.exports = app => {
   // GET request to load maintenance page when a tenant logs in
-  app.get("/tenant/maintenance/", (req, res) => {
+  app.get("/tenant/maintenance/:id", (req, res) => {
     // TODO: get tenantId from HTML after authentication
     // get tenant id from route
     // const tenantId = req.params.id;
     db.maintenancerequest
       .findAll({
-        where: { tenantid: 1 }, // value will be req.params.id
+        where: { tenantid: req.params.id }, // value will be req.params.id
         include: [
           {
             model: db.requesttype
