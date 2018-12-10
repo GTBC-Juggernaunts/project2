@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "eslint '**/*.js' --quiet",
+    "windowslint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
     "test": "npm run lint && NODE_ENV=test nyc mocha -u tdd --reporter spec --recursive ./test/**/*.js --exit",
     "migrate": "knex migrate:latest",

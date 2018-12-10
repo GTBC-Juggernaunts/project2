@@ -11,7 +11,7 @@ module.exports = app => {
         return next(err); // Not sure what this does
       }
       if (!user) {
-        return res.redirect("/").status(401); // If login/password don't match
+        return res.status(401).redirect("/"); // If login/password don't match
       }
       // Logs user in for session
       req.logIn(user, function(err) {
@@ -26,12 +26,14 @@ module.exports = app => {
 
   // Landlord login
   app.post("/login/landlord", function(req, res, next) {
+    console.log(req.body);
     passport.authenticate("local", function(err, user) {
+      console.log(user);
       if (err) {
         return next(err);
       }
       if (!user) {
-        return res.redirect("/").status(401); //on failed login redirects to root page
+        return res.status(401).redirect("/"); //on failed login redirects to root page
       }
       //Logs user in for session
       req.logIn(user, function(err) {
