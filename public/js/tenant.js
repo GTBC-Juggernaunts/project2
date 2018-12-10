@@ -25,6 +25,7 @@ $(function() {
   });
 
   // Post Request for Rent Payment
+  // TODO: need tenantId from authenticated tenant
   $("#submitPaymentBtn").on("click", function() {
     // payment request objec
     const paymentObj = {
