@@ -1,5 +1,5 @@
 $(function() {
-  // Sign-up listener
+  // Registration listener
   $("#sign-up").on("click", function(event) {
     event.preventDefault();
     let registration = {
@@ -21,8 +21,21 @@ $(function() {
         .val()
         .trim()
     };
-    console.log(registration); // TODO: Clear from linting
-    console.log(`Name: ${regName}\nEmail: ${email}\nPassword: ${password}`);
+
+    $.ajax({
+      type: "POST",
+      url: "/register",
+      data: registration,
+      dataType: "json",
+      success: function() {
+        console.log("Sending request to login tenant");
+      },
+      error: function(data) {
+        console.log(JSON.parse(data));
+      }
+    }).then(data => {
+      console.log(data);
+    });
   });
 
   // Login listener

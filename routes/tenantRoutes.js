@@ -7,20 +7,20 @@ const db = require("../models");
 module.exports = app => {
   // GET request to load maintenance page when a tenant logs in
   app.get("/tenant/maintenance/:id", (req, res) => {
-    // TODO: get tenantId from HTML after authentication
-    // get tenant id from route
-    // const tenantId = req.params.id;
     db.maintenancerequest
       .findAll({
         where: { tenantid: req.params.id }, // value will be req.params.id
         include: [
           {
             model: db.requesttype
+          },
+          {
+            model: db.tenant
           }
         ]
       })
       .then(data => {
-        // console.log(data);
+        console.log(data);
         res.status(200).render("tenant-maint", { maintRequest: data });
       });
   });
@@ -51,40 +51,40 @@ module.exports = app => {
   });
 
   // GET all payments where leaseId relates to payment
-  app.get("/tenant/payment", (req, res) => {
-    db.payment
-      .findAll({
-        where: { leaseid: 1 },
-        include: [
-          {
-            model: db.paymentstatus
-          }
-          // TODO: lease model is not being associated for some reason
-          // need this in order to grab
-          // ,
-          // {
-          //   model: db.lease
-          // }
-        ]
+  app.get("/tenant/payment/:id", (req, res) => {
+    db.lease
+      .findOne({
+        where: {
+          tenantid: req.params.id
+        }
       })
-      .then(data => {
-        console.log(data);
-        // console.log(data.payment[0].paymentstatus);
-        res.render("tenant-payment", { payment: data });
+      .then(leaseData => {
+        console.log(leaseData);
+        db.payment
+          .findAll({
+            where: {
+              leaseid: leaseData.id
+            },
+            include: [
+              {
+                model: db.paymentstatus
+              }
+            ]
+          })
+          .then(paymentData => {
+            console.log(paymentData);
+            res.render("tenant-payment", { payment: paymentData });
+          });
       });
   });
 
   // PUT request to update payment status to paid
-  // TODO: need to do the following update below, currently not updating paymentstatusid
-  // update payments
-  // set paymentstatusid = 1
-  // where leaseid = x
   app.put("/tenant/payment/:id", (req, res) => {
     console.log(req.body);
     db.payment
       .update(
         {
-          paymentstatusid: 2
+          paymentstatusId: 1
         },
         {
           where: {
@@ -99,6 +99,5 @@ module.exports = app => {
       .catch(err => {
         res.json(err);
       });
-    // console.log(res);
   });
 };

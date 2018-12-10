@@ -31,9 +31,7 @@ module.exports = app => {
             }
           })
           .then(data => {
-            console.log(data);
             tenantID = data.id;
-            console.log(tenantID);
             return res.json({ route: "/tenant/maintenance/" + tenantID });
           });
         console.log(tenantID);
@@ -74,8 +72,9 @@ module.exports = app => {
         }
       })
       .then(data => {
+        // if we find existing user
         if (data) {
-          return res.redirect(451, "/");
+          return res.status(451).json({ statusCode: 451, status: "error" });
         } else {
           db.user
             .create({
@@ -99,7 +98,8 @@ module.exports = app => {
                   userId: data.id
                 });
               }
-              res.redirect("/");
+              res.json({ statusCode: 201, status: "Created" });
+              res.redirect(201, "/");
             });
         }
       });

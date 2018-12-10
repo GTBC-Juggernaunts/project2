@@ -4,19 +4,15 @@
 
 
   <!-- default route when clicking logo logged in as tenant -->
-  <a href="/tenant/maintenance/{{#each maintRequest}}{{this.tenant.id}}{{/each}}">
+  <a href="/tenant/maintenance/{{#with maintRequest.[0]}}{{tenantid}}{{/with}}">
     <div class="item">
       <img id="travis" src="https://dwglogo.com/wp-content/uploads/2017/12/1200px-travis_ci_vector_logo.png" alt="templogo" />
-
-      {{#each maintRequest}}
-        <div id="profile" data-id="{{this.tenant.id}}">Tenant: {{this.tenant.name}}</div>
-      {{/each}}
-
+      <div id="profile" {{#with maintRequest.[0]}} data-tenantid="{{tenantid}}">Tenant: {{tenant.name}}{{/with}}</div>
     </div>
   </a>
 
   <!-- maintenance -->
-  <a href="/tenant/maintenance/{{#each maintRequest}}{{this.tenant.id}}{{/each}}">
+  <a href="/tenant/maintenance/{{#with maintRequest.[0]}}{{tenantid}}{{/with}}">
     <div class="item">
       <div class="fa fa-wrench"></div>
       <div class="label">Maintenance</div>
@@ -24,14 +20,14 @@
   </a>
 
   <!-- pay rent -->
-  <a href="/tenant/payment/{{#each maintRequest}}{{this.tenant.id}}{{/each}}">
+  <a href="/tenant/payment/{{#with maintRequest.[0]}}{{tenantid}}{{/with}}">
     <div class="item">
       <div class="fa"><i class="fas fa-money-bill"></i></div>
       <div class="label">Pay Rent</div>
     </div>
   </a>
 
-  <!-- signout -->
+  <!-- Sign Out -->
   <a href="/logout">
     <div class="item">
       <div class="fa fa-sign-out-alt"></div>

@@ -1,18 +1,20 @@
 $(function() {
   // POST Request for Maintenance Request
   $("#submitBtn").on("click", function() {
+    // Grab property references
+    let landlordId = $(this).data("landlordid");
+    let tenantId = $(this).data("tenantid");
+    let property = $(this).data("propertyid");
+
     const maintRequest = {
-      // name: $("#name").val(),
       requesttypeId: $("#requestType").val(),
-      // address: $("#address").val(),
       description: $("#description").val(),
-      // TODO: need after authentication:
-      landlordId: 1, // maintenancerequest.landlordId,
-      tenantid: 1, // maintenancerequest.tenantId,
-      propertyId: 1 // maintenancerequest.propertyId
+      landlordId: landlordId,
+      tenantid: tenantId,
+      propertyId: property
     };
 
-    //Post request for maintenace request
+    //Post request for maintenance request
     $.ajax("/tenant/maintenance", {
       type: "POST",
       data: maintRequest
@@ -26,7 +28,7 @@ $(function() {
 
   // Post Request for Rent Payment
   $("#submitPaymentBtn").on("click", function() {
-    // payment request objec
+    // payment request object
     const paymentObj = {
       name: $("#paymentName").val(),
       address: $("#paymentAddress").val(),
@@ -34,14 +36,13 @@ $(function() {
       amount: $("#paymentAmount").val()
     };
 
-    // POST request
-    // TODO: need to grab the leaseId from HTML via data-attribute
-    $.ajax(`/tenant/payment/${id}`, {
+    // PUT request
+    let leasedId = $(this).data("lease");
+    $.ajax({
+      url: `/tenant/payment/${leasedId}`,
       type: "PUT"
-      // ,
-      // data: paymentObj
     }).then(function() {
-      console.log("Payment Submitted Successfuly");
+      console.log("Payment Submitted Successfully");
       location.reload();
     });
     console.log(paymentObj);
