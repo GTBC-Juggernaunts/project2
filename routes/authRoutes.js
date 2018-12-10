@@ -11,7 +11,7 @@ module.exports = app => {
         return next(err); // Not sure what this does
       }
       if (!user) {
-        return res.status(401).redirect("/"); // If login/password don't match
+        return res.redirect(401, "/"); // If login/password don't match
       }
       // Logs user in for session
       req.logIn(user, function(err) {
@@ -33,7 +33,7 @@ module.exports = app => {
         return next(err);
       }
       if (!user) {
-        return res.status(401).redirect("/"); //on failed login redirects to root page
+        return res.redirect(401, "/"); //on failed login redirects to root page
       }
       //Logs user in for session
       req.logIn(user, function(err) {
