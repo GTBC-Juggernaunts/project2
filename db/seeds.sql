@@ -72,5 +72,5 @@ INSERT INTO maintenancerequests
 VALUES 
 ('Electricity is out', now(), now(), 1, 1, 2, 1),
 ('Its so cold in here', now(), now(), 1, 1, 4, 1),
-('Anyway someone can come cut the grass', now(), now(), 2, 2, 6, 2),
+('Anyway someone can come cut the grass', now(), now(), 2, 2, 3, 2),
 ('Looking for to get rid of the pest here', now(), now(), 2, 2, 6, 2);
