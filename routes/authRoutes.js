@@ -59,6 +59,7 @@ module.exports = app => {
         }
 
         //Finds Landlord Id from User Id
+        console.log("user found, finding landlord");
         db.landlord
           .findOne({
             where: {
@@ -68,7 +69,7 @@ module.exports = app => {
           .then(data => {
             landlordId = data.id;
             // Directs user to properties page
-            return res.json({ route: "/landlord/properties/" + landlordId});
+            return res.json({ route: "/landlord/properties/" + landlordId });
           });
       });
     })(req, res, next);
