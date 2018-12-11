@@ -24,14 +24,12 @@ app.use(session({ secret: "supersmashbros", resave: false, saveUnitialized: fals
 // Authentication Middleware
 passport.use(
   new LocalStrategy(function(inputUsername, password, callback) {
-    console.log("starting authentications strategem");
+    console.log("starting authentications");
     db.user
       .findOne({
         where: { username: inputUsername }
       })
       .then(data => {
-        // let user = data.map(d => d.get({ plain: true }));
-        console.log("---- authentication return ----");
         let user = data;
         if (!user) {
           return callback(null, false, { message: "No user found" });
