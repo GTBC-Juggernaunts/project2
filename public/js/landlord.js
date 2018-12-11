@@ -16,12 +16,10 @@ $(function() {
     };
     console.log(newProperty);
 
-    //Post request for maintenace request
     $.ajax("/landlord/properties", {
       type: "POST",
       data: newProperty
     }).then(function() {
-      console.log("new property added sucessfully");
       location.reload();
     });
     console.log(newProperty);
@@ -31,7 +29,6 @@ $(function() {
   $(".resolvedBtn").on("click", function() {
     // maintenance request object
     const maintId = $(this).data("maint-id");
-    console.log(maintId);
 
     $.ajax(`/landlord/maintenance/${maintId}`, {
       type: "DELETE"
@@ -54,15 +51,12 @@ $(function() {
       startDate: $("#lease-start-date").val(),
       endDate: $("#lease-end-date").val(),
       signDate: $("#lease-sign-date").val()
-      // TODO: need to send propertyId and landlordId
     };
 
-    // PUT request for resolving maintenace request
     $.ajax("/landlord/tenants", {
       type: "POST",
       data: newTenant
     }).then(function() {
-      console.log("new tenant added sucessfully");
       location.reload();
     });
     console.log(newTenant);

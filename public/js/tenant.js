@@ -16,12 +16,10 @@ $(function() {
       propertyId: property
     };
 
-    //Post request for maintenance request
     $.ajax("/tenant/maintenance", {
       type: "POST",
       data: maintRequest
     }).then(function() {
-      console.log("new maintenance request submitted successfully");
       location.reload();
     });
 
@@ -45,7 +43,6 @@ $(function() {
       type: "PUT",
       data: paymentObj
     }).then(function() {
-      console.log("Payment Submitted Successfully");
       location.reload();
     });
     console.log(paymentObj);

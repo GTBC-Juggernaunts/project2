@@ -72,9 +72,7 @@ $(function() {
         .done(data => {
           window.location.replace(data.route);
         })
-        .catch(() => {
-          // console.log("PLEASE HELP");
-        });
+        .catch();
     } else {
       $.ajax({
         type: "POST",
@@ -93,9 +91,7 @@ $(function() {
         .done(data => {
           window.location.replace(data.route);
         })
-        .catch(() => {
-          // console.log("PLEASE HELP");
-        });
+        .catch();
     }
   });
 });
