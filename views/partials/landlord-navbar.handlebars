@@ -2,28 +2,28 @@
 <div class="navbar">
     <h2 id="logo">curRent</h2>
     <!-- default route when clicking logo logged in as landlord -->
-    <a href="/landlord/properties">
+    <a href="/landlord/properties/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
             <img id="travis" src="/images/curRent_logo.png" alt="logo" />
             <div id="profile" {{#with property.[0]}} data-landlordid="{{landlordId}}">Landlord: {{#if name}}{{name}}{{else}}{{landlord.name}}{{/if}}{{/with}} </div>
         </div>
     </a>
     <!-- properties -->
-    <a href="/landlord/properties">
+    <a href="/landlord/properties/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
             <div class="fa fa-home"></div>
             <div class="label">Properties</div>
         </div>
     </a>
     <!-- tenants -->
-    <a href="/landlord/tenants">
+    <a href="/landlord/tenants/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
             <div class="fa fa-users"></div>
             <div class="label">Tenants</div>
         </div>
     </a>
     <!-- maintenance -->
-    <a href="/landlord/maintenance">
+    <a href="/landlord/maintenance/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
             <div class="fa fa-wrench"></div>
             <div class="label">Maintenance</div>
