@@ -27,18 +27,14 @@ $(function() {
     console.log(newProperty);
   });
 
-  // PUT Request for resolving maintenance requests
-  $("#resolvedBtn").on("click", function() {
-    // TODO: update maint request where maintId =
+  // DELETE Request for resolving maintenance requests
+  $(".resolvedBtn").on("click", function() {
     // maintenance request object
     const maintId = $(this).data("maint-id");
     console.log(maintId);
 
-    // PUT request for resolving maintenace request
     $.ajax(`/landlord/maintenance/${maintId}`, {
       type: "DELETE"
-      // ,
-      // data: maintId
     }).then(function() {
       console.log("maintenance request updated");
       location.reload();

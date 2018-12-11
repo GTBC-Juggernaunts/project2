@@ -78,6 +78,9 @@ module.exports = app => {
   // Register a new landlord or tenant
   app.post("/register", function(req, res) {
     // Search for a user that exist first
+    if (!req.body.userType || !req.body.name || !req.body.email || !req.body.password) {
+      return res.status(451).json({ statusCode: 451, status: "error" });
+    }
     db.user
       .findOne({
         where: {
@@ -111,7 +114,6 @@ module.exports = app => {
                   userId: data.id
                 });
               }
-              res.json({ statusCode: 201, status: "Created" });
               res.redirect(201, "/");
             });
         }

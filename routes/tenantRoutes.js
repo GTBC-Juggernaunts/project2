@@ -84,6 +84,15 @@ module.exports = app => {
   // PUT request to update payment status to paid
   app.put("/tenant/payment/:id", (req, res) => {
     if (req.isAuthenticated()) {
+      if (
+        !req.body.name ||
+        !req.body.address ||
+        req.body.cardNumber.length > 16 ||
+        req.body.cardNumber.length <= 15 ||
+        !req.body.amount
+      ) {
+        return res.status(400).json({ error: "get educated" });
+      }
       console.log(req.body);
       db.payment
         .update(

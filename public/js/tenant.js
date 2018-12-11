@@ -42,7 +42,8 @@ $(function() {
     let leasedId = $(this).data("lease");
     $.ajax({
       url: `/tenant/payment/${leasedId}`,
-      type: "PUT"
+      type: "PUT",
+      data: paymentObj
     }).then(function() {
       console.log("Payment Submitted Successfully");
       location.reload();
