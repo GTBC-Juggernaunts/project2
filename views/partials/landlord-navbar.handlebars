@@ -8,6 +8,7 @@
             <div id="profile" {{#with property.[0]}} data-landlordid="{{landlordId}}">Landlord: {{#if name}}{{name}}{{else}}{{landlord.name}}{{/if}}{{/with}} </div>
         </div>
     </a>
+
     <!-- properties -->
     <a href="/landlord/properties/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
@@ -15,6 +16,7 @@
             <div class="label">Properties</div>
         </div>
     </a>
+
     <!-- tenants -->
     <a href="/landlord/tenants/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
@@ -22,6 +24,7 @@
             <div class="label">Tenants</div>
         </div>
     </a>
+
     <!-- maintenance -->
     <a href="/landlord/maintenance/{{#with property.[0]}}{{landlordId}}{{/with}}">
         <div class="item">
@@ -29,22 +32,8 @@
             <div class="label">Maintenance</div>
         </div>
     </a>
-    {{!-- TODO: invoices and contracts features coming soon --}}
-    <!-- invoices -->
-    {{!-- <a href="/landlord/invoices">
-        <div class="item">
-            <div class="fa"><i class="fas fa-file-invoice-dollar"></i></div>
-            <div class="label">Invoices</div>
-        </div>
-    </a> --}}
-    <!-- contracts -->
-    {{!-- <a href="/landlord/contracts">
-        <div class="item">
-            <div class="fa fa-file"></div>
-            <div class="label">Contracts</div>
-        </div>
-    </a> --}}
-    <!-- signout -->
+    
+    <!-- Sign Out -->
     <a href="/logoutuser">
         <div class="item">
             <div class="fa fa-sign-out-alt"></div>
