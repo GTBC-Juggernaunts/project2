@@ -84,14 +84,18 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                 <tbody>
                     {{#each property}}
                     <tr>
                         <td>{{this.tenantName}}</td>
                         <td>{{this.email}}</td>
                         <td>{{this.address}}</td>
                         <td>{{formatNumber this.rent style="currency" currency="USD"}}</td>
-                        <td>{{this.isactive}}</td>
+                        {{#if this.isactive}}
+                        <td>true</td>
+                        {{else}}
+                        <td>false</td>
+                        {{/if}}
                         <td>{{formatDate this.signdate}}</td>
                         <td>{{formatDate this.startdate}}</td>
                         <td>{{formatDate this.enddate}}</td>                    
