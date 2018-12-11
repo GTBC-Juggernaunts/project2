@@ -23,9 +23,9 @@ nav > * {
 }
 
 nav img {
-  margin-top: 2vh;
-  width: 14vh;
-  height: 14vh;
+  margin-top: 1vh;
+  width: 10vh;
+  height: 10vh;
 }
 
 .nav-wrapper li > a:hover {

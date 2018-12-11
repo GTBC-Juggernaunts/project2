@@ -65,4 +65,5 @@ values
 INSERT INTO maintenancerequests 
 (description,createdAt,updatedAt,landlordId,tenantid, requesttypeId,propertyId) 
 VALUES 
-('Electricity is out',now(),now(),1,1,2,1);
+('Electricity is out',now(),now(),1,1,2,1),
+('Toilet is leaking mysterious liquid', now(),now(),1,1,5,1);

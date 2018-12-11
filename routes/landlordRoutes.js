@@ -23,8 +23,6 @@ module.exports = app => {
           ]
         })
         .then(data => {
-          console.log("------experiment below--------");
-          console.log(data);
           res.render("landlord-properties", { property: data });
         });
     } else {
@@ -85,8 +83,6 @@ module.exports = app => {
           { type: db.Sequelize.QueryTypes.SELECT }
         )
         .then(data => {
-          console.log("------ Tenant Data Below -------");
-          console.log(data);
           res.render("landlord-tenants", { property: data });
         });
     } else {
@@ -127,7 +123,7 @@ module.exports = app => {
   });
 
   // GET all maintenance requests for this landlord
-  // TODO: get all maint reqs by landlordId
+
   app.get("/landlord/maintenance/:id", (req, res) => {
     if (req.isAuthenticated()) {
       db.maintenancerequest
@@ -155,12 +151,13 @@ module.exports = app => {
   // DELETE to resolve the maintenance request
   app.delete("/landlord/maintenance/:id", (req, res) => {
     if (req.isAuthenticated()) {
+      console.log(req);
       db.maintenancerequest
         .destroy({
           where: { id: req.params.id }
         })
-        .then(data => {
-          res.json(data);
+        .then(() => {
+          res.redirect(204, "/landlord/maintenance/" + req.params.id);
         });
     } else {
       res.send("GET FUCKED SON!!!");
