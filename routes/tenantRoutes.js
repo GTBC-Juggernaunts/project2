@@ -8,7 +8,7 @@ module.exports = app => {
     if (req.isAuthenticated()) {
       db.maintenancerequest
         .findAll({
-          where: { tenantid: req.params.id }, // value will be req.params.id
+          where: { tenantid: req.params.id },
           include: [
             {
               model: db.requesttype
@@ -19,18 +19,16 @@ module.exports = app => {
           ]
         })
         .then(data => {
-          console.log(data);
           res.status(200).render("tenant-maint", { maintRequest: data });
         });
     } else {
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
   // POST request to create new maintenance request
   app.post("/tenant/maintenance", (req, res) => {
     if (req.isAuthenticated()) {
-      console.log(req.body);
       db.maintenancerequest
         .create({
           requesttypeId: req.body.requesttypeId,
@@ -46,7 +44,7 @@ module.exports = app => {
           res.json(err);
         });
     } else {
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
@@ -68,16 +66,16 @@ module.exports = app => {
          FROM payments p
          INNER JOIN paymentstatuses ps on ps.id = p.paymentstatusId
          INNER JOIN leases l on l.id = p.leaseId
-         INNER JOIN tenants t on l.tenantId = ${tenantID}
-         INNER JOIN properties pr on l.propertyid = pr.id`,
+         INNER JOIN tenants t on l.tenantId = t.id
+         INNER JOIN properties pr on l.propertyid = pr.id
+         Where t.id = ${tenantID}`,
           { type: db.Sequelize.QueryTypes.SELECT }
         )
         .then(returndata => {
-          console.log(returndata);
           res.status(200).render("tenant-payment", { maintRequest: returndata });
         });
     } else {
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
@@ -91,9 +89,8 @@ module.exports = app => {
         req.body.cardNumber.length <= 15 ||
         !req.body.amount
       ) {
-        return res.status(400).json({ error: "get educated" });
+        return res.status(400).json({ status: "error" });
       }
-      console.log(req.body);
       db.payment
         .update(
           {
@@ -112,14 +109,12 @@ module.exports = app => {
           res.json(err);
         });
     } else {
-      res.send("Sorry, you do not have the correct permissons. Please have a nice day.");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
   // Logout User
   app.get("/logoutuser", function(req, res) {
-    console.log("Logging user out?");
-    console.log("darron thinks he knows, but he dont");
     req.logout();
     req.session.destroy();
     res.status(204);

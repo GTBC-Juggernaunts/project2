@@ -5,7 +5,7 @@
   <!-- default route when clicking logo logged in as tenant -->
   <a href="/tenant/maintenance/{{#with maintRequest.[0]}}{{tenantId}}{{/with}}">
     <div class="item">
-      <img id="travis" src="https://dwglogo.com/wp-content/uploads/2017/12/1200px-travis_ci_vector_logo.png" alt="templogo" />
+      <img id="travis" src="/images/curRent_logo.png" alt="logo" />
       <div id="profile" {{#with maintRequest.[0]}} data-tenantid="{{tenantId}}">Tenant: {{#if name}}{{name}}{{else}}{{tenant.name}}{{/if}}{{/with}}</div>
     </div>
   </a>
@@ -34,6 +34,4 @@
     </div>
   </a>
 </div>
-
-
 <!-- end nav bar -->

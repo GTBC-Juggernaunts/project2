@@ -6,6 +6,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Colors */
@@ -41,7 +42,6 @@
   margin-bottom: 15px;
 }
 
-
 /* main content on the right side*/
 .right-side {
   margin-left: 175px; 
@@ -61,14 +61,13 @@
 /* end main content */
 
 /* style nav bar using flex box to stick on left hand side */
-
 .navbar {
   position: fixed;
   top: 0px;
   left: -5px;
   width: 175px;
   height: 100vh;
-  background: #133C55;
+  background: #3C91E6;
   display: flex;
   /* main axis is vertical */
   flex-direction: column;
@@ -77,13 +76,11 @@
 }
 
 /* added anchor tags to each button in the nav bar */
-
 .navbar a {
   flex: 1;
 }
 
 /* align and space the buttons accordingly */
-
 .navbar a .item {
   flex: 1;
   text-align: center;
@@ -99,7 +96,6 @@
 }
 
 /* setup a transition effect using the cubic bezier function*/
-
 .navbar a .item div.label {
   color: #eee;
   position: relative;
@@ -111,13 +107,11 @@
 }
 
 /* will transition in the text for the button */
-
 .navbar:hover .item .label {
   left: 0px;
 }
 
 /* styles the button  */
-
 .navbar:hover a:nth-child(3) div.fa {
   color: #A2D729;
 }
@@ -141,9 +135,3 @@
 .navbar:hover a:nth-child(8) div.fa {
   color: #A2D729;
 }
-
-/* to do later add active color for button */
-
-/* .navbar:active a:nth-child(3) div.fa {
-    color: green; 
-  } */
