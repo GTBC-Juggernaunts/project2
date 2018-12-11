@@ -1,20 +1,18 @@
-// *************************************************************
 var passport = require("passport");
 var db = require("../models");
 
 // Routes
-// *************************************************************
 module.exports = app => {
   // Tenant login
   app.post("/login/tenant", function(req, res, next) {
     passport.authenticate("local", function(err, user) {
       if (err) {
-        return next(err); // Not sure what this does
+        return next(err);
       }
 
+      // If login/password don't match
       if (!user) {
-        console.log("Wrong user");
-        return res.redirect(401, "/"); // If login/password don't match
+        return res.redirect(401, "/");
       }
 
       // Logs user in for session
@@ -47,8 +45,9 @@ module.exports = app => {
         return next(err);
       }
 
+      //on failed login redirects to root page
       if (!user) {
-        return res.redirect(401, "/"); //on failed login redirects to root page
+        return res.redirect(401, "/");
       }
 
       //Logs user in for session
@@ -77,10 +76,11 @@ module.exports = app => {
 
   // Register a new landlord or tenant
   app.post("/register", function(req, res) {
-    // Search for a user that exist first
+    // Field Validation
     if (!req.body.userType || !req.body.name || !req.body.email || !req.body.password) {
       return res.status(451).json({ statusCode: 451, status: "error" });
     }
+    // Search for a user that exist first
     db.user
       .findOne({
         where: {
@@ -100,8 +100,6 @@ module.exports = app => {
             .then(data => {
               //create the appropriate record in either landlords or tenants
               if (req.body.userType === "Landlord") {
-                console.log("------data below-------");
-                console.log(data.id);
                 db.landlord.create({
                   name: req.body.name,
                   email: req.body.email,

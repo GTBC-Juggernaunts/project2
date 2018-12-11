@@ -1,10 +1,7 @@
 // Models
-// *************************************************************
 const db = require("../models");
-// const passport = require("passport");
 
 // Routes
-// *************************************************************
 module.exports = app => {
   // GET all properties for this landlord
   app.get("/landlord/properties/:id", (req, res) => {
@@ -26,17 +23,13 @@ module.exports = app => {
           res.render("landlord-properties", { property: data });
         });
     } else {
-      //TODO: Darron to have fun
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
   // POST for creating new property
-
   app.post("/landlord/properties/", (req, res) => {
     if (req.isAuthenticated()) {
-      console.log("--- Post received ---");
-      console.log(req.body);
       db.property
         .create({
           address: req.body.address,
@@ -52,7 +45,7 @@ module.exports = app => {
           res.json(error);
         });
     } else {
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
@@ -86,44 +79,44 @@ module.exports = app => {
           res.render("landlord-tenants", { property: data });
         });
     } else {
-      res.send("GET SPRUNKED!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
   // POST to create tenant/lease
-  app.post("/landlord/tenants/:id", (req, res) => {
-    if (req.isAuthenticated()) {
-      const newLease = {
-        leasename: req.body.name,
-        signdate: req.body.signDate,
-        startdate: req.body.startDate,
-        enddate: req.body.endDate,
-        binaryfile: 1,
-        isactive: req.body.active,
-        landlordId: 1, // TODO: need landlord id as req.body.landlordId
-        propertyid: 3 // TODO: need propertyId as req.body.propertyId
-      };
-      db.lease
-        .create(
-          newLease
-          // , {
-          // include: [
-          //   {
-          //     model: db.tenant
-          //   }
-          // ]
-          //   }
-        )
-        .then(data => {
-          res.json(data);
-        });
-    } else {
-      res.send("GET FUCKED SON!!!");
-    }
-  });
+  // DISABLED v2
+  // app.post("/landlord/tenants/:id", (req, res) => {
+  //   if (req.isAuthenticated()) {
+  //     const newLease = {
+  //       leasename: req.body.name,
+  //       signdate: req.body.signDate,
+  //       startdate: req.body.startDate,
+  //       enddate: req.body.endDate,
+  //       binaryfile: 1,
+  //       isactive: req.body.active,
+  //       landlordId: 1,
+  //       propertyid: 3
+  //     };
+  //     db.lease
+  //       .create(
+  //         newLease
+  //         // , {
+  //         // include: [
+  //         //   {
+  //         //     model: db.tenant
+  //         //   }
+  //         // ]
+  //         //   }
+  //       )
+  //       .then(data => {
+  //         res.json(data);
+  //       });
+  //   } else {
+  //     res.send("GET FUCKED SON!!!");
+  //   }
+  // });
 
   // GET all maintenance requests for this landlord
-
   app.get("/landlord/maintenance/:id", (req, res) => {
     if (req.isAuthenticated()) {
       db.maintenancerequest
@@ -140,11 +133,10 @@ module.exports = app => {
           ]
         })
         .then(data => {
-          console.log(data);
           res.render("landlord-maint", { property: data });
         });
     } else {
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
@@ -160,14 +152,12 @@ module.exports = app => {
           res.redirect(204, "/landlord/maintenance/" + req.params.id);
         });
     } else {
-      res.send("GET FUCKED SON!!!");
+      res.send("👮 Dont think you should be here 👮");
     }
   });
 
   // Logout User
   app.get("/logoutuser", function(req, res) {
-    console.log("Logging user out?");
-    console.log("darron thinks he knows, but he dont");
     req.logout();
     req.session.destroy();
     res.status(204);
