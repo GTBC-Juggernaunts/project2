@@ -4,8 +4,10 @@ var exphbs = require("express-handlebars");
 var Handlebars = require("handlebars");
 var HandlebarsIntl = require("handlebars-intl");
 
-var passport = require("passport");
-var Strategy = require("passport-local").Strategy;
+var passport = require("passport"),
+  LocalStrategy = require("passport-local").Strategy;
+var session = require("express-session"),
+  bodyParser = require("body-parser");
 
 var db = require("./models");
 
@@ -14,25 +16,28 @@ var PORT = process.env.PORT || 3000;
 
 HandlebarsIntl.registerWith(Handlebars);
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static("public"));
+app.use(session({ secret: "supersmashbros", resave: false, saveUnitialized: false }));
 
 // Authentication Middleware
 passport.use(
-  new Strategy(function(inputUsername, password, callback) {
+  new LocalStrategy(function(inputUsername, password, callback) {
+    console.log("starting authentications strategem");
     db.user
       .findOne({
         where: { username: inputUsername }
       })
       .then(data => {
         // let user = data.map(d => d.get({ plain: true }));
+        console.log("---- authentication return ----");
         let user = data;
         if (!user) {
-          return callback(null, false);
+          return callback(null, false, { message: "No user found" });
         }
         if (user.password !== password) {
-          return callback(null, false);
+          return callback(null, false, { message: "Wrong password, try again OR DONT" });
         }
         return callback(null, user);
       });
@@ -41,12 +46,14 @@ passport.use(
 
 // Authentication Config to Serialize and Deserialize Users to keep their session authenticated
 passport.serializeUser(function(user, cb) {
+  console.log("serializing user...");
   cb(null, user.id);
 });
 
 passport.deserializeUser(function(inputId, cb) {
+  console.log("deserializing user...");
   db.user.findOne({ where: { id: inputId } }).then(data => {
-    let user = data.map(d => d.get({ plain: true }));
+    let user = data;
     cb(null, user);
   });
 });

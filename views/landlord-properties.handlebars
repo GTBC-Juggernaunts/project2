@@ -46,7 +46,7 @@
         </div>
         <!-- end description -->
         <div class="row">
-            <button id="submitPropteryBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action">
+            <button id="submitPropteryBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action" data-landlordid="{{#with property.[0]}}{{landlordId}}{{/with}}">
                 Add Property <i class="material-icons right">home</i>
             </button>
         </div>
@@ -98,6 +98,7 @@
                             <div class="col s6">
                                 <h5 class="prop-active">Vacant</h5>
                                 <!-- add maintenance request return object here -->
+                                <!--TODO: fix this in the query-->
                                 {{#if this.lease.0.isactive}}
                                 <div>Yes</div>
                                 {{else}}

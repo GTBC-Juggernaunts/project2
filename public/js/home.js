@@ -59,14 +59,22 @@ $(function() {
         type: "POST",
         url: "/login/landlord",
         data: login,
-        dataType: "json",
         success: function() {
           console.log("Sending request to login tenant");
         },
-        error: function(data) {
-          console.log(JSON.parse(data));
+        error: function() {
+          // Clear login form
+          $("#login-user-type").val("Tenant");
+          $("#login-password").val("");
+          $("#username").val("");
         }
-      });
+      })
+        .done(data => {
+          window.location.replace(data.route);
+        })
+        .catch(() => {
+          // console.log("PLEASE HELP");
+        });
     } else {
       $.ajax({
         type: "POST",

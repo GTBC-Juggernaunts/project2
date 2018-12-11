@@ -16,8 +16,8 @@
             <h5>Requests</h5>
             <hr class="my-2" />
             <!-- Maintenance Request cards -->
+          {{#each property}}
             <div class="col s12 m3">
-                {{#each maintRequests}}
                 <div class="card">
                     <div class="card-image">
                         <img src="/images/wrench-icon.png" alt="wrench icon">
@@ -26,14 +26,14 @@
                         <p>View Request Information</p>
                     </div>
                     <div class="card-action">
-                        <button href="#maint-req-details-modal" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button>
+                        <button href="#maint-req-details-modal{{this.id}}" class="btn waves-effect waves-light ocean-blue modal-trigger">Details</button>
                         <button id="resolvedBtn" data-maint-id="{{this.id}}" class="btn waves-effect waves-light ocean-blue">Resolved</button>
                     </div>
                 </div>
                 <!-- Maintenance Request Details Modal -->
                 {{!-
                 <!-- Maintenance Request Details Modal --> --}}
-                <div id="maint-req-details-modal" class="modal modal-fixed-footer center-align">
+                <div id="maint-req-details-modal{{this.id}}" class="modal modal-fixed-footer center-align">
                     <div class="modal-content">
                         <div class="fa fa-wrench"></div>
                         <h5>Request Information</h5>
@@ -66,8 +66,8 @@
                         <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
                     </div>
                 </div>
-                {{/each}}
             </div>
+          {{/each}}
             <!-- end property card -->
         </div>
         <!-- end row 4 -->

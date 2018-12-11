@@ -42,22 +42,35 @@ module.exports = app => {
 
   // Landlord login
   app.post("/login/landlord", function(req, res, next) {
-    console.log(req.body);
     passport.authenticate("local", function(err, user) {
-      console.log(user);
       if (err) {
         return next(err);
       }
+
       if (!user) {
         return res.redirect(401, "/"); //on failed login redirects to root page
       }
+
       //Logs user in for session
       req.logIn(user, function(err) {
+        let landlordId;
         if (err) {
           return next(err);
         }
-        // Directs user to properties page
-        return res.redirect(302, "/landlord/properties");
+
+        //Finds Landlord Id from User Id
+        console.log("user found, finding landlord");
+        db.landlord
+          .findOne({
+            where: {
+              userid: user.id
+            }
+          })
+          .then(data => {
+            landlordId = data.id;
+            // Directs user to properties page
+            return res.json({ route: "/landlord/properties/" + landlordId });
+          });
       });
     })(req, res, next);
   });

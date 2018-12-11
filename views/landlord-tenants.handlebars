@@ -78,8 +78,8 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        {{!-- <th>Email</th> --}}
-                        {{!-- <th>Address</th> --}}
+                        <th>Email</th>
+                        <th>Address</th>
                         <th>Monthly Rent</th>
                         <th>Active</th>
                         <th>Sign Date</th>
@@ -89,11 +89,11 @@
                 </thead>
 
                 <tbody>
-                    {{#each tenant}}
+                    {{#each property}}
                     <tr>
-                        <td>{{this.leasename}}</td>
-                        {{!-- <td>{{this.email}}</td> --}}
-                        {{!-- <td>{{this.address}}</td> --}}
+                        <td>{{this.tenantName}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.address}}</td>
                         <td>{{formatNumber this.rent style="currency" currency="USD"}}</td>
                         <td>{{this.isactive}}</td>
                         <td>{{formatDate this.signdate}}</td>

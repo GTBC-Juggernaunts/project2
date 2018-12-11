@@ -1,7 +1,10 @@
 $(function() {
-  // POST Request for Landlord Properties
+  // POST Request for New Landlord Properties
   $("#submitPropteryBtn").on("click", function() {
     event.preventDefault();
+    // Grab landlord id from submit btn
+    let landlordId = $(this).data("landlordid");
+
     // maintenance request object
     const newProperty = {
       tenantName: $("#tenant-name").val(),
@@ -9,7 +12,7 @@ $(function() {
       description: $("#prop-description").val(),
       capacity: $("#capacity").val(),
       rent: $("#monthly-rent").val(),
-      landlordId: 1
+      landlordId: landlordId
     };
     console.log(newProperty);
 
