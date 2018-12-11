@@ -62,7 +62,8 @@ $(function() {
         success: function() {
           console.log("Sending request to login tenant");
         },
-        error: function() {// Clear login form
+        error: function() {
+          // Clear login form
           $("#login-user-type").val("Tenant");
           $("#login-password").val("");
           $("#username").val("");

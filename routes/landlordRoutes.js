@@ -8,10 +8,10 @@ const db = require("../models");
 module.exports = app => {
   // GET all properties for this landlord
   app.get("/landlord/properties/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       db.property
         .findAll({
-          where: {landlordId: req.params.id},
+          where: { landlordId: req.params.id },
           include: [
             {
               model: db.lease,
@@ -25,7 +25,7 @@ module.exports = app => {
         .then(data => {
           console.log("------experiment below--------");
           console.log(data);
-          res.render("landlord-properties", {property: data});
+          res.render("landlord-properties", { property: data });
         });
     } else {
       //TODO: Darron to have fun
@@ -36,7 +36,7 @@ module.exports = app => {
   // POST for creating new property
 
   app.post("/landlord/properties/", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       console.log("--- Post received ---");
       console.log(req.body);
       db.property
@@ -61,7 +61,7 @@ module.exports = app => {
   // GET all tenants for this landlord
 
   app.get("/landlord/tenants/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       landlordId = req.params.id;
 
       db.sequelize
@@ -82,12 +82,12 @@ module.exports = app => {
         INNER JOIN leases le on p.id = le.propertyId
         INNER JOIN tenants t on le.tenantId = t.id
         WHERE la.id = ${landlordId}`,
-          {type: db.Sequelize.QueryTypes.SELECT}
+          { type: db.Sequelize.QueryTypes.SELECT }
         )
         .then(data => {
           console.log("------ Tenant Data Below -------");
           console.log(data);
-          res.render("landlord-tenants", {property: data});
+          res.render("landlord-tenants", { property: data });
         });
     } else {
       res.send("GET SPRUNKED!!!");
@@ -96,7 +96,7 @@ module.exports = app => {
 
   // POST to create tenant/lease
   app.post("/landlord/tenants/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       const newLease = {
         leasename: req.body.name,
         signdate: req.body.signDate,
@@ -129,10 +129,10 @@ module.exports = app => {
   // GET all maintenance requests for this landlord
   // TODO: get all maint reqs by landlordId
   app.get("/landlord/maintenance/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       db.maintenancerequest
         .findAll({
-          where: {landlordId: req.params.id},
+          where: { landlordId: req.params.id },
 
           include: [
             {
@@ -145,7 +145,7 @@ module.exports = app => {
         })
         .then(data => {
           console.log(data);
-          res.render("landlord-maint", {property: data});
+          res.render("landlord-maint", { property: data });
         });
     } else {
       res.send("GET FUCKED SON!!!");
@@ -154,16 +154,16 @@ module.exports = app => {
 
   // DELETE to resolve the maintenance request
   app.delete("/landlord/maintenance/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       db.maintenancerequest
         .destroy({
-          where: {id: req.params.id}
+          where: { id: req.params.id }
         })
         .then(data => {
           res.json(data);
         });
     } else {
-      res.send("GET FUCKED SON!!!")
+      res.send("GET FUCKED SON!!!");
     }
   });
 

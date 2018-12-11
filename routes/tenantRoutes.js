@@ -5,10 +5,10 @@ const db = require("../models");
 module.exports = app => {
   // GET request to load maintenance page when a tenant logs in
   app.get("/tenant/maintenance/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       db.maintenancerequest
         .findAll({
-          where: {tenantid: req.params.id}, // value will be req.params.id
+          where: { tenantid: req.params.id }, // value will be req.params.id
           include: [
             {
               model: db.requesttype
@@ -20,7 +20,7 @@ module.exports = app => {
         })
         .then(data => {
           console.log(data);
-          res.status(200).render("tenant-maint", {maintRequest: data});
+          res.status(200).render("tenant-maint", { maintRequest: data });
         });
     } else {
       res.send("GET FUCKED SON!!!");
@@ -29,7 +29,7 @@ module.exports = app => {
 
   // POST request to create new maintenance request
   app.post("/tenant/maintenance", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       console.log(req.body);
       db.maintenancerequest
         .create({
@@ -52,7 +52,7 @@ module.exports = app => {
 
   // GET all payments where leaseId relates to payment
   app.get("/tenant/payment/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       tenantID = req.params.id;
 
       db.sequelize
@@ -70,11 +70,11 @@ module.exports = app => {
          INNER JOIN leases l on l.id = p.leaseId
          INNER JOIN tenants t on l.tenantId = ${tenantID}
          INNER JOIN properties pr on l.propertyid = pr.id`,
-          {type: db.Sequelize.QueryTypes.SELECT}
+          { type: db.Sequelize.QueryTypes.SELECT }
         )
         .then(returndata => {
           console.log(returndata);
-          res.status(200).render("tenant-payment", {maintRequest: returndata});
+          res.status(200).render("tenant-payment", { maintRequest: returndata });
         });
     } else {
       res.send("GET FUCKED SON!!!");
@@ -83,7 +83,7 @@ module.exports = app => {
 
   // PUT request to update payment status to paid
   app.put("/tenant/payment/:id", (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       console.log(req.body);
       db.payment
         .update(
