@@ -1,3 +1,4 @@
+{{!-- Get navbar from partials --}}
 {{> landlord-navbar}}
 
 <!-- main content -->
@@ -16,14 +17,13 @@
                 <input placeholder="First and Last Name" id="tenant-name" type="text" class="validate" />
                 <label for="name">Name</label>
             </div>
-            <!-- grab address value here -->
+            <!-- grab adddress value here -->
             <div class="input-field col m6">
                 <i class="material-icons prefix">home</i>
                 <input placeholder="Address" id="prop-address" type="text" class="validate" />
                 <label for="image">Property Address</label>
             </div>
         </div>
-
         <!-- description -->
         <div class="row">
             <div class="input-field col m6">
@@ -45,14 +45,11 @@
             </div>
         </div>
         <!-- end description -->
-
         <div class="row">
-            <button id="submitPropteryBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action"
-                data-landlordid="{{#with property.[0]}}{{landlordId}}{{/with}}">
+            <button id="submitPropteryBtn" class="btn waves-effect waves-light ocean-blue" type="submit" name="action" data-landlordid="{{#with property.[0]}}{{landlordId}}{{/with}}">
                 Add Property <i class="material-icons right">home</i>
             </button>
         </div>
-
         <!-- start cards -->
         <div class="row">
             <!-- Request History -->
@@ -64,6 +61,8 @@
                 <div class="card">
                     <div class="card-image">
                         <img src="https://cdn.dribbble.com/users/851350/screenshots/4553026/otovo_01_gif_3.gif" />
+                        <!-- add imageUrl here  -->
+                        {{!-- <img src="{{this.imageUrl}}" /> --}}
                     </div>
                     <div class="card-content property-details">
                         <p>{{this.address}}</p>
@@ -76,48 +75,56 @@
                         <i class="material-icons">home</i>
                         <h5>Property Information</h5>
                         <div class="row">
+                            {{!-- <div class="col s6">
+                                <h5 id="prop-description">Description</h5>
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.address}}</div>
+                            </div> --}}
+                            <div class="col s6">
+                                <h5 id="prop-description">Description</h5>
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.description}}</div>
+                            </div>
+                            <div class="col s6">
+                                <h5 class="prop-capacity">Capacity</h5>
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.capacity}}</div>
+                            </div>
+                            <div class="col s6">
+                                <h5 class="prop-rent">Monthly Rent</h5>
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.rent}}</div>
+                            </div>
+                            <div class="col s6">
+                                <h5 class="prop-active">Vacant</h5>
+                                <!-- add maintenance request return object here -->
+                                <!--TODO: fix this in the query-->
+                                {{#if this.lease.0.isactive}}
+                                <div>Yes</div>
+                                {{else}}
+                                <div>No</div>
+                                {{/if}}
+                            </div>
+                            {{!-- <div class="col s6">
+                                <h5 class="prop-start-date">Start Date</h5>
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.startDate}}</div>
+                            </div>
+                            <div class="col s6">
+                                <h5 class="prop-start-date">End Date</h5>›
+                                <!-- add maintenance request return object here -->
+                                <div>{{this.endDate}}</div>
+                            </div> --}}
+
                         </div>
                     </div>
-                    <div class="col s6">
-                        <h5 id="prop-description">Description</h5>
-                        <!-- add maintenance request return object here -->
-                        <div>{{this.description}}</div>
-                    </div>
-                    <div class="col s6">
-                        <h5 class="prop-capacity">Capacity</h5>
-                        <!-- add maintenance request return object here -->
-                        <div>{{this.capacity}}</div>
-                    </div>
-                    <div class="col s6">
-                        <h5 class="prop-rent">Monthly Rent</h5>
-                        <!-- add maintenance request return object here -->
-                        <div>{{this.rent}}</div>
-                    </div>
-                    <div class="col s6">
-                        <h5 class="prop-active">Vacant</h5>
-                        <!-- add maintenance request return object here -->
-                        {{#if this.lease.0.isactive}}
-                        <div>Yes</div>
-                        {{else}}
-                        <div>No</div>
-                        {{/if}}
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
                     </div>
                 </div>
             </div>
-            <div class="col s6">
-                <h5 class="prop-start-date">End Date</h5>›
-                <!-- add maintenance request return object here -->
-                <div>{{this.endDate}}</div>
-            </div>
+            {{/each}}
+            <!-- end property card -->
         </div>
     </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close btn waves-effect waves-light ocean-blue">Done</a>
-    </div>
-</div>
-</div>
-{{/each}}
-<!-- end property card -->
-</div>
-</div>
 </div>
